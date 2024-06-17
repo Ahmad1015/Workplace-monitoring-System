@@ -1,50 +1,30 @@
 import torch
 import json
 from torchvision.transforms import Compose, Lambda
-from torchvision.transforms._transforms_video import (
-    CenterCropVideo,
-    NormalizeVideo,
-)
+from torchvision.transforms._transforms_video import CenterCropVideo, NormalizeVideo
 from pytorchvideo.data.encoded_video import EncodedVideo
-from pytorchvideo.transforms import (
-    ApplyTransformToKey,
-    ShortSideScale,
-    UniformTemporalSubsample,
-    UniformCropVideo
-)
-from typing import Dict
-
+from pytorchvideo.transforms import ApplyTransformToKey, ShortSideScale, UniformTemporalSubsample
+import urllib
 
 # Device on which to run the model
-# Set to cuda to load on GPU
 device = "cpu"
 
-# Pick a pretrained model and load the pretrained weights
+# Load the pretrained model
 model_name = "slowfast_r50"
 model = torch.hub.load("facebookresearch/pytorchvideo", model=model_name, pretrained=True)
-
-# Set to eval mode and move to desired device
 model = model.to(device)
 model = model.eval()
 
-
-#Load class names
-with open("F:/kinetics_classnames.json", "r") as f:
+# Load class names
+json_url = "https://dl.fbaipublicfiles.com/pyslowfast/dataset/class_names/kinetics_classnames.json"
+json_filename = "kinetics_classnames.json"
+urllib.request.urlretrieve(json_url, json_filename)
+with open(json_filename, "r") as f:
     kinetics_classnames = json.load(f)
 
-# Create an id to label name mapping
-kinetics_id_to_classname = {}
-for k, v in kinetics_classnames.items():
-    kinetics_id_to_classname[v] = str(k).replace('"', "")
-    
-print(kinetics_id_to_classname)
+kinetics_id_to_classname = {v: k for k, v in kinetics_classnames.items()}
 
-
-# Input Transforms
-####################
-# SlowFast transform
-####################
-
+# Define transforms
 side_size = 256
 mean = [0.45, 0.45, 0.45]
 std = [0.225, 0.225, 0.225]
@@ -55,78 +35,75 @@ frames_per_second = 30
 alpha = 4
 
 class PackPathway(torch.nn.Module):
-    """
-    Transform for converting video frames as a list of tensors.
-    """
     def __init__(self):
         super().__init__()
 
     def forward(self, frames: torch.Tensor):
         fast_pathway = frames
-        # Perform temporal sampling from the fast pathway.
         slow_pathway = torch.index_select(
             frames,
             1,
-            torch.linspace(
-                0, frames.shape[1] - 1, frames.shape[1] // alpha
-            ).long(),
+            torch.linspace(0, frames.shape[1] - 1, frames.shape[1] // alpha).long(),
         )
         frame_list = [slow_pathway, fast_pathway]
         return frame_list
 
-transform =  ApplyTransformToKey(
+transform = ApplyTransformToKey(
     key="video",
-    transform=Compose(
-        [
-            UniformTemporalSubsample(num_frames),
-            Lambda(lambda x: x/255.0),
-            NormalizeVideo(mean, std),
-            ShortSideScale(
-                size=side_size
-            ),
-            CenterCropVideo(crop_size),
-            PackPathway()
-        ]
-    ),
+    transform=Compose([
+        UniformTemporalSubsample(num_frames),
+        Lambda(lambda x: x / 255.0),
+        NormalizeVideo(mean, std),
+        ShortSideScale(size=side_size),
+        CenterCropVideo(crop_size),
+        PackPathway()
+    ]),
 )
 
-# The duration of the input clip is also specific to the model.
-clip_duration = (num_frames * sampling_rate)/frames_per_second
-
-
-
 # Load the example video
-video_path = "F:/writing.mp4"
-
-# Select the duration of the clip to load by specifying the start and end duration
-# The start_sec should correspond to where the action occurs in the video
-start_sec = 0
-end_sec = start_sec + clip_duration
-# end_sec = 15
-
-# Initialize an EncodedVideo helper class
+video_path = "Writing-Activity-Model/writing.mp4"
 video = EncodedVideo.from_path(video_path)
 
-# Load the desired clip
-video_data = video.get_clip(start_sec=start_sec, end_sec=end_sec)
+# Define sliding window parameters
+window_size = 4  # seconds per segment
+overlap = 2  # seconds of overlap
 
-# Apply a transform to normalize the video input
-video_data = transform(video_data)
+# Duration and total frames
+total_duration = video.duration
+total_frames = int(total_duration * frames_per_second)
 
-# Move the inputs to the desired device
-inputs = video_data["video"]
-inputs = [i.to(device)[None, ...] for i in inputs]
+# Function to predict and aggregate results
+def predict_windowed(video, start_sec, end_sec, window_size, overlap):
+    clip_duration = (num_frames * sampling_rate) / frames_per_second
+    post_act = torch.nn.Softmax(dim=1)
+    actions = []
 
-# Pass the input clip through the model
-preds = model(inputs)
+    for window_start in range(0, int(total_duration - window_size) + 1, window_size - overlap):
+        window_end = window_start + window_size
 
+        # Load video segment
+        video_data = video.get_clip(start_sec=window_start, end_sec=window_end)
+        video_data = transform(video_data)
+        inputs = video_data["video"]
+        inputs = [i.to(device)[None, ...] for i in inputs]
 
+        # Predict actions
+        with torch.no_grad():
+            preds = model(inputs)
+            preds = post_act(preds)
+            pred_classes = preds.topk(k=5).indices[0].cpu().numpy()
+            pred_probs = preds.topk(k=5).values[0].cpu().numpy()
 
-# Get the predicted classes
-post_act = torch.nn.Softmax(dim=1)
-preds = post_act(preds)
-pred_classes = preds.topk(k=5).indices
+        # Store the segment's predictions
+        for i in range(len(pred_classes)):
+            class_name = kinetics_id_to_classname.get(int(pred_classes[i]), "Unknown")
+            actions.append((window_start, window_end, class_name, pred_probs[i]))
 
-# Map the predicted classes to the label names
-pred_class_names = [kinetics_id_to_classname[int(i)] for i in pred_classes[0]]
-print("Predicted labels: %s" % ", ".join(pred_class_names))
+    return actions
+
+# Predict actions in windowed segments
+predicted_actions = predict_windowed(video, 0, total_duration, window_size, overlap)
+
+# Display predictions
+for start, end, label, prob in predicted_actions:
+    print(f"From {start}s to {end}s: {label} (confidence: {prob:.2f})")
