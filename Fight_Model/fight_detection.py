@@ -1,11 +1,10 @@
 import cv2
 import os
-
 import torch
-import os
 import numpy as np
 import detectron2
 from detectron2.config import get_cfg
+from Writing_Activity_Model.ActivityRecPyTorchVideo import ActivityRecognition
 from detectron2 import model_zoo
 from detectron2.engine import DefaultPredictor
 import pytorchvideo
@@ -26,7 +25,11 @@ def show_frame(frame):
 
 def fight_detection(filename):
     print("Inside detection video file")
-    print(f"Processed video saved at: {os.path.abspath(f'processed_{filename}')}")
+    
+    # Define the Output Videos directory relative to the current script's location
+    output_dir = os.path.join(os.path.dirname(__file__))
+    print(f"Processed video saved at: {os.path.abspath(os.path.join(output_dir, f'processed_{filename}'))}")
+
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     video_model = slow_r50_detection(True)  # Another option is slowfast_r50_detection
     video_model = video_model.eval().to(device)
@@ -57,10 +60,8 @@ def fight_detection(filename):
         else:
             predicted_boxes = torch.empty((0, 4))  # No predictions
         
-        print(f"Detected {len(predicted_boxes)} person(s)")
+        print(f"Detected {len(predicted_boxes)} prediction(s)")
         return predicted_boxes
-
-
 
     def ava_inference_transform(clip, boxes, num_frames=4, crop_size=256, data_mean=[0.45, 0.45, 0.45], data_std=[0.225, 0.225, 0.225], slow_fast_alpha=None):
         boxes = np.array(boxes)
@@ -198,16 +199,23 @@ def fight_detection(filename):
             output_video.release()
             print(f"Processed video saved to {processed_output_path}")
             try:
-                os.remove(filename)
-                print(f"The file '{filename}' has been deleted successfully.")
+                os.remove(video_path)
+                print(f"The file '{video_path}' has been deleted successfully.")
             except FileNotFoundError:
-                print(f"The file '{filename}' does not exist.")
+                print(f"The file '{video_path}' does not exist.")
 
         except Exception as e:
             print(f"Error during video processing: {e}")
-        
 
+    process_video(filename, os.path.join(output_dir, f'processed_{filename}'))
+        # Split the path into directory and filename
+    directory, original_filename = os.path.split(filename)
 
-        
+    # Add 'processed_' before the original filename
+    new_filename = 'processed_' + original_filename
 
-    process_video(filename, f'processed_{filename}')
+    # Combine the directory path and the new filename
+    processed_filename = os.path.join(directory, new_filename)
+    print("Hello")
+    print(processed_filename)
+    ActivityRecognition(processed_filename)
