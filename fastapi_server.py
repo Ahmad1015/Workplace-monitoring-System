@@ -1,8 +1,6 @@
 from fastapi import FastAPI, BackgroundTasks
 import os
 from Fight_Model.video_recording import record_video
-from Fight_Model.fight_detection import fight_detection
-from Writing_Activity_Model.ActivityRecPyTorchVideo import ActivityRecognition
 
 app = FastAPI()
 video_counter = 1
@@ -19,17 +17,8 @@ async def record_video_endpoint(background_tasks: BackgroundTasks, duration: int
     video_counter += 1
     return {"info": f"Video recording started: {filename}"}
 
-@app.post("/process_fight_detection/")
-async def process_fight_detection_endpoint(background_tasks: BackgroundTasks, filename: str):
-    print(f"Adding task to process fight detection on video: {filename}")
-    background_tasks.add_task(fight_detection, filename)
-    return {"info": f"Fight detection started on: {filename}"}
 
-@app.post("/process_activity_recognition/")
-async def process_activity_recognition_endpoint(background_tasks: BackgroundTasks, filename: str):
-    print(f"Adding task to process activity recognition on video: {filename}")
-    background_tasks.add_task(ActivityRecognition, filename)
-    return {"info": f"Activity recognition started on: {filename}"}
+
 
 if __name__ == "__main__":
     import uvicorn

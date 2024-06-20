@@ -5,6 +5,10 @@ from torchvision.transforms._transforms_video import CenterCropVideo, NormalizeV
 from pytorchvideo.data.encoded_video import EncodedVideo
 from pytorchvideo.transforms import ApplyTransformToKey, ShortSideScale, UniformTemporalSubsample
 import urllib
+import subprocess
+from Writing_Activity_Model.yolo import detect  
+
+
 
 def ActivityRecognition(filename):
     print(filename)
@@ -117,6 +121,24 @@ def ActivityRecognition(filename):
         for start, end, label, prob in predicted_actions:
             if prob > 0.7:  # Only write actions with confidence above 0.7
                 file.write(f"From {start}s to {end}s: {label} (confidence: {prob:.2f})\n")
+    # Full path to detect.py
+    detect_script = r"F:\Policy-Based-Presence-Tracker-UI\Writing_Activity_Model\yolo\detect.py"
+
+    # Full path to weights file
+    weights_path = r"F:\Policy-Based-Presence-Tracker-UI\Writing_Activity_Model\yolo\best.pt"
+
+    
+    # Define the command and arguments
+    command = ["python", detect_script, "--weights", weights_path, "--source", filename]
+
+    # Run the command
+    result = subprocess.run(command, capture_output=True, text=True)
+
+    # Print the output
+    print("Output from Yolo:")
+    print(result.stdout)
+    print(result.stderr)
+
     
 
 if __name__ == "__main__":
