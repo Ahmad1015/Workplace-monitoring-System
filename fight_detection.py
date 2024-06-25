@@ -217,4 +217,3 @@ def fight_detection(filename):
     print("Hello")
     print(processed_filename)
     
-fight_detection("processed_output_1.mp4")

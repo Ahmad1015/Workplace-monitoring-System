@@ -11,7 +11,7 @@ from yolo.detect import detect
 
 
 def ActivityRecognition(filename):
-    print(filename)
+    
     # Device on which to run the model
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Using device: {device}")
@@ -123,10 +123,10 @@ def ActivityRecognition(filename):
             if prob > 0.7:  # Only write actions with confidence above 0.7
                 file.write(f"From {start}s to {end}s: {label} (confidence: {prob:.2f})\n")
     # Full path to detect.py
-    detect_script = r"D:\Workplace-monitoring-System\yolo\detect.py"
+    detect_script = r"F:\Workplace-monitoring-System\yolo\detect.py"
 
     # Full path to weights file
-    weights_path = r"D:\Workplace-monitoring-System\yolo\best.pt"
+    weights_path = r"F:\Workplace-monitoring-System\yolo\best.pt"
 
     
     # Define the command and arguments

@@ -5,16 +5,17 @@ import os
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
 from face_recog import face_detection  
-from fight_detection import fight_detection  
+from fight_detection import fight_detection 
+import shutil    
 
 # Define the Output Videos directory relative to the current script's location
 output_dir = os.path.join(os.path.dirname(__file__))
 
-def record_video(filename, duration=60, fps=30, video_counter=1):
+def record_video(filename, duration=60, fps=30, ip_address=0):
     print(f"Started recording video: {filename}")
 
     # Check if IP camera is provided
-    cap = cv2.VideoCapture('http://192.168.10.8:4747/video')
+    cap = cv2.VideoCapture(ip_address)
 
     if not cap.isOpened():
         print("Error: Camera not accessible")
@@ -37,11 +38,11 @@ def record_video(filename, duration=60, fps=30, video_counter=1):
 
     print(f"Finished recording video: {filename}")
 
-    # Create two copies of the recorded video
     copy1 = os.path.join(output_dir, f"copy1_{filename}")
     copy2 = os.path.join(output_dir, f"copy2_{filename}")
-    os.system(f"cp {os.path.join(output_dir, filename)} {copy1}")
-    os.system(f"cp {os.path.join(output_dir, filename)} {copy2}")
+
+    shutil.copy(os.path.join(output_dir, filename), copy1)
+    shutil.copy(os.path.join(output_dir, filename), copy2)
 
     return copy1, copy2
 
