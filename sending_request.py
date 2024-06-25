@@ -1,7 +1,7 @@
 import requests
 import time
 import subprocess
-
+'''
 # Full path to detect.py
 detect_script = r"F:\Policy-Based-Presence-Tracker-UI\Writing_Activity_Model\yolo\detect.py"
 
@@ -19,4 +19,5 @@ result = subprocess.run(command, capture_output=True, text=True)
 print("Output from Yolo:")
 print(result.stdout)
 print(result.stderr)
-    
+    '''
+response = requests.post('http://localhost:8000/record_video')

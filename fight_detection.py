@@ -4,7 +4,6 @@ import torch
 import numpy as np
 import detectron2
 from detectron2.config import get_cfg
-from Writing_Activity_Model.ActivityRecPyTorchVideo import ActivityRecognition
 from detectron2 import model_zoo
 from detectron2.engine import DefaultPredictor
 import pytorchvideo
@@ -24,16 +23,15 @@ def show_frame(frame):
     plt.show()
 
 def fight_detection(filename):
+    print(filename)
     print("Inside detection video file")
-    
     # Define the Output Videos directory relative to the current script's location
     output_dir = os.path.join(os.path.dirname(__file__))
     print(f"Processed video saved at: {os.path.abspath(os.path.join(output_dir, f'processed_{filename}'))}")
-
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     video_model = slow_r50_detection(True)  # Another option is slowfast_r50_detection
     video_model = video_model.eval().to(device)
-
+    print(device)
     cfg = get_cfg()
     cfg.MODEL.DEVICE = device
     cfg.merge_from_file(model_zoo.get_config_file("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml"))
@@ -218,4 +216,5 @@ def fight_detection(filename):
     processed_filename = os.path.join(directory, new_filename)
     print("Hello")
     print(processed_filename)
-    ActivityRecognition(processed_filename)
+    
+fight_detection("processed_output_1.mp4")

@@ -1,6 +1,6 @@
 from fastapi import FastAPI, BackgroundTasks
 import os
-from Fight_Model.video_recording import record_video
+from video_recording import record_video
 
 app = FastAPI()
 video_counter = 1

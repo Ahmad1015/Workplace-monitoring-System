@@ -3,7 +3,7 @@ import time
 from pathlib import Path
 import os
 import sys
-sys.path.insert(0, 'F:\Policy-Based-Presence-Tracker-UI\Writing_Activity_Model\yolo')
+sys.path.insert(0, 'D:\Workplace-monitoring-System\Writing_Activity_Model\yolo')
 
 
 import cv2
