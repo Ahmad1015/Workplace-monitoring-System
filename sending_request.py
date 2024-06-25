@@ -1,23 +1,16 @@
 import requests
-import time
-import subprocess
-'''
-# Full path to detect.py
-detect_script = r"F:\Policy-Based-Presence-Tracker-UI\Writing_Activity_Model\yolo\detect.py"
 
-# Full path to weights file
-weights_path = r"F:\Policy-Based-Presence-Tracker-UI\Writing_Activity_Model\yolo\best.pt"
+# Define the URL and the data payload
+url = 'http://localhost:8000/record_video/'
+data = {
+    "duration": 60,
+    "fps": 30,
+    "ip_address": "192.168.10.3",
+    "port": 4747
+}
 
+# Send the POST request with JSON data
+response = requests.post(url, json=data)
 
-# Define the command and arguments
-command = ["python", detect_script, "--weights", weights_path, "--source", 'processed_output_1.mp4']
-
-# Run the command
-result = subprocess.run(command, capture_output=True, text=True)
-
-# Print the output
-print("Output from Yolo:")
-print(result.stdout)
-print(result.stderr)
-    '''
-response = requests.post('http://localhost:8000/record_video')
+# Print the response
+print(response.json())
