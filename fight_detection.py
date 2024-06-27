@@ -180,12 +180,7 @@ async def fight_detection(filename):
             cap.release()
             output_video.release()
             logging.info(f"Processed video saved to {processed_output_path}")
-            
-            try:
-                os.remove(video_path)
-                logging.info(f"The file '{video_path}' has been deleted successfully.")
-            except FileNotFoundError:
-                logging.warning(f"The file '{video_path}' does not exist.")
+        
 
         except Exception as e:
             logging.error(f"Error during video processing: {e}")

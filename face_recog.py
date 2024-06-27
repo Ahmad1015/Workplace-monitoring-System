@@ -1,13 +1,15 @@
 import numpy as np
 import face_recognition
 import cv2
-import os
 import time
+import requests
+from datetime import datetime
+import os
 
-def face_detection(filename):
+async def face_detection(filename, frame_skip=15):
     # Load a sample picture and learn how to recognize it.
     try:
-        known_image = face_recognition.load_image_file("Official_photo_1.jpeg")
+        known_image = face_recognition.load_image_file("Official_photo.jpeg")
         known_face_encoding = face_recognition.face_encodings(known_image)[0]
         print("Known face encoding loaded successfully.")
     except Exception as e:
@@ -28,8 +30,15 @@ def face_detection(filename):
     print("Video file opened successfully.")
 
     # Initialize variables for time-based screenshot saving
-    screenshot_interval = 13.0  
+    screenshot_interval = 5  # 5 seconds
     last_screenshot_time = time.time()
+    screenshot_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "screenshots")
+
+    # Create the directory if it doesn't exist
+    if not os.path.exists(screenshot_directory):
+        os.makedirs(screenshot_directory)
+
+    frame_count = 0
 
     while video_capture.isOpened():
         # Grab a single frame of video
@@ -37,6 +46,12 @@ def face_detection(filename):
         if not ret:
             print("End of video file reached or failed to capture image.")
             break
+
+        frame_count += 1
+
+        # Skip frames to reduce processing load
+        if frame_count % frame_skip != 0:
+            continue
 
         current_time = time.time()
 
@@ -52,6 +67,8 @@ def face_detection(filename):
 
         print(f"Found {len(face_locations)} face(s) in the current frame.")
 
+        face_detected = False
+
         # Loop through each face found in the current frame of video
         for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
             # See if the face is a match for the known face(s)
@@ -63,6 +80,7 @@ def face_detection(filename):
             best_match_index = np.argmin(face_distances)
             if matches[best_match_index]:
                 name = known_face_names[best_match_index]
+                face_detected = True
 
             # Scale back up face locations since the frame we detected in was scaled to 1/2 size
             top *= 2
@@ -78,12 +96,24 @@ def face_detection(filename):
             font = cv2.FONT_HERSHEY_DUPLEX
             cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
-        # Save screenshot every 3 seconds if any face is detected
-        if face_locations and (current_time - last_screenshot_time) >= screenshot_interval:
-            screenshot_filename = f"screenshot_{int(current_time)}.jpg"
+        # Save screenshot if the interval has passed and a face was detected
+        if face_detected and (current_time - last_screenshot_time) >= screenshot_interval:
+            screenshot_filename = os.path.join(screenshot_directory, f"screenshot_{int(current_time)}.jpg")
             cv2.imwrite(screenshot_filename, frame)
             print(f"Saved screenshot: {screenshot_filename}")
             last_screenshot_time = current_time
+
+            # Send the detection record to the FastAPI endpoint
+            detection_record = {
+                "name": name,
+                "screenshot_path": screenshot_filename,
+                "timestamp": datetime.now().isoformat()
+            }
+            response = requests.post("http://localhost:8000/save_detection/", json=detection_record)
+            if response.status_code == 200:
+                print("Detection record saved successfully.")
+            else:
+                print("Failed to save detection record.")
 
         # Debug message for each frame
         print("Frame processed.")
@@ -98,7 +128,4 @@ def face_detection(filename):
     cv2.destroyAllWindows()
     print("Video file and windows released/closed successfully.")
 
-# Example usage
-if __name__ == '__main__':
-    video_filename = "copy1_output_1.mp4"  # Replace with your video file path
-    face_detection(video_filename)
+

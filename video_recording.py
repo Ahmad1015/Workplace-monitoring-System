@@ -78,15 +78,16 @@ async def run_process_video(model, filename):
 
 async def main_record_and_process(filename, duration, fps, ip_address):
     copy1, copy2 = record_video(filename, duration, fps, ip_address)
-    print("Going into the main function")
     with ThreadPoolExecutor() as executor:
         loop = asyncio.get_event_loop()
         tasks = [
             loop.run_in_executor(executor, asyncio.run, run_process_video('face_detection', copy1)),
-            loop.run_in_executor(executor, asyncio.run, run_process_video('fight_detection', copy2)),
+            loop.run_in_executor(executor, asyncio.run, run_process_video('fight_detection', copy2))
+            
         ]
         await asyncio.gather(*tasks)
     
     # Optionally delete the videos after processing
     delete_video(copy1)
     delete_video(copy2)
+    delete_video(filename)
