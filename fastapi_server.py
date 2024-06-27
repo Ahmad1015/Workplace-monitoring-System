@@ -1,7 +1,7 @@
 from fastapi import FastAPI, BackgroundTasks
 from pydantic import BaseModel
 import os
-from video_recording import record_video
+from video_recording import main_record_and_process
 
 app = FastAPI()
 video_counter = 1
@@ -21,7 +21,7 @@ async def record_video_endpoint(background_tasks: BackgroundTasks, request: Reco
     filename = os.path.join(script_dir, f'output_{video_counter}.mp4')
     print(f"Adding task to record video: {filename}")
     ip_address = f"http://{request.ip_address}:{request.port}/video"
-    background_tasks.add_task(record_video, filename, request.duration, request.fps, ip_address)
+    background_tasks.add_task(main_record_and_process, filename, request.duration, request.fps, ip_address)
     video_counter += 1
     return {"info": f"Video recording started: {filename}"}
 

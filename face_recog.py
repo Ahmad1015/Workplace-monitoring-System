@@ -2,11 +2,12 @@ import numpy as np
 import face_recognition
 import cv2
 import os
+import time
 
 def face_detection(filename):
     # Load a sample picture and learn how to recognize it.
     try:
-        known_image = face_recognition.load_image_file("Official_photo.jpeg")
+        known_image = face_recognition.load_image_file("Official_photo_1.jpeg")
         known_face_encoding = face_recognition.face_encodings(known_image)[0]
         print("Known face encoding loaded successfully.")
     except Exception as e:
@@ -26,12 +27,18 @@ def face_detection(filename):
 
     print("Video file opened successfully.")
 
+    # Initialize variables for time-based screenshot saving
+    screenshot_interval = 13.0  
+    last_screenshot_time = time.time()
+
     while video_capture.isOpened():
         # Grab a single frame of video
         ret, frame = video_capture.read()
         if not ret:
             print("End of video file reached or failed to capture image.")
             break
+
+        current_time = time.time()
 
         # Resize frame of video to 1/2 size for faster processing
         small_frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
@@ -44,10 +51,6 @@ def face_detection(filename):
         face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
 
         print(f"Found {len(face_locations)} face(s) in the current frame.")
-
-        # Print face encodings for debugging
-        for face_encoding in face_encodings:
-            print("Face encoding:", face_encoding)
 
         # Loop through each face found in the current frame of video
         for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
@@ -75,11 +78,15 @@ def face_detection(filename):
             font = cv2.FONT_HERSHEY_DUPLEX
             cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
-        # Display the resulting image
-        cv2.imshow('Video', frame)
+        # Save screenshot every 3 seconds if any face is detected
+        if face_locations and (current_time - last_screenshot_time) >= screenshot_interval:
+            screenshot_filename = f"screenshot_{int(current_time)}.jpg"
+            cv2.imwrite(screenshot_filename, frame)
+            print(f"Saved screenshot: {screenshot_filename}")
+            last_screenshot_time = current_time
 
         # Debug message for each frame
-        print("Frame displayed.")
+        print("Frame processed.")
 
         # Hit 'q' on the keyboard to quit!
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -93,5 +100,5 @@ def face_detection(filename):
 
 # Example usage
 if __name__ == '__main__':
-    video_filename = "path_to_your_video_file.mp4"  # Replace with your video file path
+    video_filename = "copy1_output_1.mp4"  # Replace with your video file path
     face_detection(video_filename)
