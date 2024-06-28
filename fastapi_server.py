@@ -12,8 +12,7 @@ filename = ""
 
 # MongoDB connection setup
 client = MongoClient("mongodb://localhost:27017")
-db = client["face_detection_db"]
-collection = db["detections"]
+
 
 class RecordVideoRequest(BaseModel):
     duration: int = 10
@@ -23,6 +22,7 @@ class RecordVideoRequest(BaseModel):
 
 class DetectionRecord(BaseModel):
     name: str
+    video_path: str
     screenshot_path: str
     timestamp: datetime
 
@@ -37,8 +37,17 @@ async def record_video_endpoint(background_tasks: BackgroundTasks, request: Reco
     video_counter += 1
     return {"info": f"Video recording started: {filename}"}
 
-@app.post("/save_detection/")
+@app.post("/face_detection/")
 async def save_detection(record: DetectionRecord):
+    db = client["face_detection_db"]
+    collection = db["detections"]
+    collection.insert_one(record.dict())
+    return {"info": "Detection record saved"}
+
+@app.post("/fight_detection/")
+async def save_detection(record: DetectionRecord):
+    db = client["fight_detection_db"]
+    collection = db["detections"]
     collection.insert_one(record.dict())
     return {"info": "Detection record saved"}
 

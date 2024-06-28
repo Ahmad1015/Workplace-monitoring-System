@@ -109,7 +109,7 @@ async def face_detection(filename, frame_skip=15):
                 "screenshot_path": screenshot_filename,
                 "timestamp": datetime.now().isoformat()
             }
-            response = requests.post("http://localhost:8000/save_detection/", json=detection_record)
+            response = requests.post("http://localhost:8000/face_detection/", json=detection_record)
             if response.status_code == 200:
                 print("Detection record saved successfully.")
             else:

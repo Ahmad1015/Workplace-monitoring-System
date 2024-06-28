@@ -2,12 +2,13 @@ import cv2
 import os
 import torch
 import numpy as np
-import detectron2
-import logging  # Import logging module
+import shutil
+import logging
+import requests
+from datetime import datetime
 from detectron2.config import get_cfg
 from detectron2 import model_zoo
 from detectron2.engine import DefaultPredictor
-import pytorchvideo
 from pytorchvideo.transforms.functional import (
     uniform_temporal_subsample,
     short_side_scale_with_boxes,
@@ -15,28 +16,20 @@ from pytorchvideo.transforms.functional import (
 )
 from torchvision.transforms._functional_video import normalize
 from pytorchvideo.data.ava import AvaLabeledVideoFramePaths
-from pytorchvideo.models.hub import slow_r50_detection  # Another option is slowfast_r50_detection
-import matplotlib.pyplot as plt
+from pytorchvideo.models.hub import slow_r50_detection
+from pytorchvideo.data.encoded_video import EncodedVideo
 
 # Configure logging
 logging.basicConfig(filename='fight_detection.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def show_frame(frame):
-    plt.imshow(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-    plt.title("Input Frame")
-    plt.show()
-
-async def fight_detection(filename):
+def fight_detection(filename):
     logging.info(f"Started fight detection on: {filename}")
-    
-    output_dir = os.path.join(os.path.dirname(__file__))
-    logging.info(f"Processed video will be saved at: {os.path.abspath(os.path.join(output_dir, f'processed_{filename}'))}")
-    
+
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    video_model = slow_r50_detection(True)  # Another option is slowfast_r50_detection
+    video_model = slow_r50_detection(True)
     video_model = video_model.eval().to(device)
     logging.info(f"Using device: {device}")
-    
+
     cfg = get_cfg()
     cfg.MODEL.DEVICE = device
     cfg.merge_from_file(model_zoo.get_config_file("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml"))
@@ -50,14 +43,14 @@ async def fight_detection(filename):
         scores = predictions.scores if predictions.has("scores") else None
         classes = np.array(predictions.pred_classes.tolist() if predictions.has("pred_classes") else None)
         scores = scores.numpy() if scores is not None else None
-        
+
         if scores is not None and classes is not None:
             mask = (classes == 0) & (scores > 0.75)
             predicted_boxes = boxes[mask].tensor.cpu()
         else:
-            predicted_boxes = torch.empty((0, 4))  # No predictions
-        
-        logging.info(f"Detected {len(predicted_boxes)} prediction(s) for input image.")
+            predicted_boxes = torch.empty((0, 4))
+
+        logging.info(f"Detected {len(predicted_boxes)} person(s) in frame.")
         return predicted_boxes
 
     def ava_inference_transform(clip, boxes, num_frames=4, crop_size=256, data_mean=[0.45, 0.45, 0.45], data_std=[0.225, 0.225, 0.225], slow_fast_alpha=None):
@@ -86,11 +79,22 @@ async def fight_detection(filename):
     label_map_file = os.path.join(script_dir, 'ava_action_list.pbtxt')
     label_map, allowed_class_ids = AvaLabeledVideoFramePaths.read_label_map(label_map_file)
 
-    def process_video(video_path, output_path):
+    def process_video(video_path):
         try:
-            cap = cv2.VideoCapture(video_path)
+            # Ensure the output directory exists
+            output_dir = os.path.dirname(video_path)
+            fight_detection_dir = os.path.join(output_dir, 'fight_detection')
+            if not os.path.exists(fight_detection_dir):
+                os.makedirs(fight_detection_dir)
+
+            # Make a copy of the original video
+            original_video_copy = os.path.join(output_dir, f'copy_{os.path.basename(video_path)}')
+            shutil.copyfile(video_path, original_video_copy)
+            logging.info(f"Made a copy of the original video: {original_video_copy}")
+
+            cap = cv2.VideoCapture(original_video_copy)
             if not cap.isOpened():
-                raise ValueError(f"Failed to open video file: {video_path}")
+                raise ValueError(f"Failed to open video file: {original_video_copy}")
 
             fps = cap.get(cv2.CAP_PROP_FPS)
             frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -98,9 +102,8 @@ async def fight_detection(filename):
 
             logging.info(f"Input Video FPS: {fps}, Frame Size: {frame_width}x{frame_height}")
 
-            output_dir = os.path.dirname(video_path)
-            original_filename = os.path.basename(video_path)
-            processed_filename = f'processed_{original_filename}'
+            # Output video file path
+            processed_filename = f'processed_{os.path.basename(video_path)}'
             processed_output_path = os.path.join(output_dir, processed_filename)
             logging.info(f"Output video will be saved to: {processed_output_path}")
 
@@ -112,11 +115,13 @@ async def fight_detection(filename):
 
             logging.info("VideoWriter initialized successfully.")
 
-            encoded_vid = pytorchvideo.data.encoded_video.EncodedVideo.from_path(video_path)
+            # Using EncodedVideo to read the video
+            encoded_vid = EncodedVideo.from_path(original_video_copy)
             video_duration = cap.get(cv2.CAP_PROP_FRAME_COUNT) / cap.get(cv2.CAP_PROP_FPS)
             time_stamp_range = range(0, int(video_duration))
 
             predictions = []
+            fight_detected = False
 
             for time_stamp in time_stamp_range:
                 inp_imgs = encoded_vid.get_clip(time_stamp - 0.5, time_stamp + 0.5)
@@ -145,48 +150,84 @@ async def fight_detection(filename):
                     predicted_classes = [label_map[idx] for idx, score in enumerate(scores) if score > 0.5]
                     if predicted_classes:
                         frame_predictions.append(predicted_classes)
-                
+
                 predictions.append((time_stamp, frame_predictions))
+
+                # Check if 'fight' is detected
+                for predicted_classes in frame_predictions:
+                    if 'sit' in predicted_classes:
+                        fight_detected = True
+                        break
+                if fight_detected:
+                    break  # We can stop early if a fight is detected
 
             logging.info("Finished generating predictions.")
 
-            cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-            font = cv2.FONT_HERSHEY_SIMPLEX
-            thickness = 2
-            font_scale = 1
-            color = (0, 255, 0)
+            if fight_detected:
+                logging.info("Fight detected. Preparing to save the video.")
 
-            for time_stamp, frame_predictions in predictions:
-                frame_number = int(time_stamp * fps)
-                cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number)
+                cap.release()  # Release the video capture object
 
-                for _ in range(int(fps)):
+                cap = cv2.VideoCapture(original_video_copy)
+                frame_count = 0
+
+                while cap.isOpened():
                     ret, frame = cap.read()
                     if not ret:
                         break
 
-                    if frame_predictions:
-                        combined_classes = set()
-                        for predicted_classes in frame_predictions:
-                            combined_classes.update(predicted_classes)
-
-                        combined_classes_str = ', '.join(combined_classes)
-                        cv2.putText(frame, combined_classes_str, (10, 30), font, font_scale, color, thickness, cv2.LINE_AA)
-                        print(combined_classes_str)
-                        logging.info(f"Frame {frame_number}: {combined_classes_str}")
+                    # Overlay text on all frames if fight detected
+                    cv2.putText(frame, 'Fight Detected', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
 
                     output_video.write(frame)
+                    frame_count += 1
 
+                cap.release()  # Release the video capture object again
+
+                # Release the video writer object
+                output_video.release()
+                logging.info("Released video writer resources.")
+
+                # Move the processed video to the fight detection folder
+                new_video_path = os.path.join(fight_detection_dir, processed_filename)
+                shutil.move(processed_output_path, new_video_path)
+
+                # Send fight detection record to FastAPI
+                detection_record = {
+                    "name": f"Fight detected in {os.path.basename(video_path)}",
+                    "video_path": new_video_path,
+                    "screenshot_path": "",  # Add a valid screenshot path or leave it as an empty string
+                    "timestamp": datetime.now().isoformat()
+                }
+
+                fastapi_url = "http://localhost:8000/fight_detection/"
+                try:
+                    response = requests.post(fastapi_url, json=detection_record)
+                    response.raise_for_status()
+                    logging.info(f"Fight detection sent to FastAPI. Response: {response.json()}")
+                except requests.exceptions.RequestException as e:
+                    logging.error(f"Failed to send fight detection to FastAPI: {e}")
+
+            else:
+                logging.info("No fight detected in the video.")
+
+            # Ensure all resources are released before attempting to delete the file
             cap.release()
             output_video.release()
-            logging.info(f"Processed video saved to {processed_output_path}")
-        
 
+            # Remove the original video copy
+            if os.path.exists(original_video_copy):
+                os.remove(original_video_copy)
+                logging.info(f"Deleted the original video copy: {original_video_copy}")
+
+        except PermissionError as e:
+            logging.error(f"PermissionError: {e}")
+            raise
         except Exception as e:
-            logging.error(f"Error during video processing: {e}")
+            logging.error(f"Error processing video {video_path}: {e}")
+            raise
 
-    process_video(filename, os.path.join(output_dir, f'processed_{filename}'))
-    directory, original_filename = os.path.split(filename)
-    new_filename = 'processed_' + original_filename
-    processed_filename = os.path.join(directory, new_filename)
-    logging.info(f"Finished processing video: {processed_filename}")
+    process_video(filename)
+    logging.info(f"Fight detection completed for: {filename}")
+
+fight_detection('output_1.mp4')
