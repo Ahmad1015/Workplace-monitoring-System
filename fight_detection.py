@@ -22,7 +22,7 @@ from pytorchvideo.data.encoded_video import EncodedVideo
 # Configure logging
 logging.basicConfig(filename='fight_detection.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def fight_detection(filename):
+async def fight_detection(filename):
     logging.info(f"Started fight detection on: {filename}")
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -83,7 +83,7 @@ def fight_detection(filename):
         try:
             # Ensure the output directory exists
             output_dir = os.path.dirname(video_path)
-            fight_detection_dir = os.path.join(output_dir, 'fight_detection')
+            fight_detection_dir = os.path.join(output_dir, 'Videos')
             if not os.path.exists(fight_detection_dir):
                 os.makedirs(fight_detection_dir)
 
@@ -196,7 +196,6 @@ def fight_detection(filename):
                 detection_record = {
                     "name": f"Fight detected in {os.path.basename(video_path)}",
                     "video_path": new_video_path,
-                    "screenshot_path": "",  # Add a valid screenshot path or leave it as an empty string
                     "timestamp": datetime.now().isoformat()
                 }
 
@@ -229,5 +228,4 @@ def fight_detection(filename):
 
     process_video(filename)
     logging.info(f"Fight detection completed for: {filename}")
-
-fight_detection('output_1.mp4')
+    os.remove(filename)

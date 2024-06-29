@@ -27,7 +27,6 @@ def record_video(filename, duration=10, fps=30, ip_address=0):
     output_filepath = os.path.join(output_dir, filename)
     out = cv2.VideoWriter(output_filepath, fourcc, fps, (int(cap.get(3)), int(cap.get(4))))
 
-    start_time = time.time()
     frame_count = 0
     total_frames = duration * fps
 
@@ -53,6 +52,7 @@ def record_video(filename, duration=10, fps=30, ip_address=0):
     try:
         shutil.copy(output_filepath, copy1)
         shutil.copy(output_filepath, copy2)
+        os.remove(filename)
     except Exception as e:
         print(f"Error copying files: {e}")
 
@@ -62,11 +62,14 @@ async def process_video(model, filename):
     if model == 'face_detection':
         print(f"Started face detection on: {filename}")
         await face_detection(filename)
+        print(f"Completed face detection on: {filename}")
     elif model == 'fight_detection':
         print(f"Started fight detection on: {filename}")
         await fight_detection(filename)
+        print(f"Completed fight detection on: {filename}")
 
-def delete_video(filename):
+async def delete_video(filename):
+    print(f"Attempting to delete video: {filename}")
     try:
         os.remove(filename)
         print(f"Deleted video: {filename}")
@@ -77,17 +80,13 @@ async def run_process_video(model, filename):
     await process_video(model, filename)
 
 async def main_record_and_process(filename, duration, fps, ip_address):
+    print("Recording video")
     copy1, copy2 = record_video(filename, duration, fps, ip_address)
+    print("Recording completed. Processing videos")
     with ThreadPoolExecutor() as executor:
         loop = asyncio.get_event_loop()
         tasks = [
             loop.run_in_executor(executor, asyncio.run, run_process_video('face_detection', copy1)),
             loop.run_in_executor(executor, asyncio.run, run_process_video('fight_detection', copy2))
-            
         ]
         await asyncio.gather(*tasks)
-    
-    # Optionally delete the videos after processing
-    delete_video(copy1)
-    delete_video(copy2)
-    delete_video(filename)

@@ -20,11 +20,21 @@ class RecordVideoRequest(BaseModel):
     ip_address: str
     port: int
 
-class DetectionRecord(BaseModel):
+class ScreenshotDetectionRecord(BaseModel):
     name: str
-    video_path: str
     screenshot_path: str
     timestamp: datetime
+
+class VideoDetectionRecord(BaseModel):
+    name: str
+    video_path: str
+    timestamp: datetime
+
+class GunDetectionRecord(BaseModel):
+    name: str
+    video_path: str
+    timestamp: datetime
+
 
 @app.post("/record_video/")
 async def record_video_endpoint(background_tasks: BackgroundTasks, request: RecordVideoRequest):
@@ -38,15 +48,22 @@ async def record_video_endpoint(background_tasks: BackgroundTasks, request: Reco
     return {"info": f"Video recording started: {filename}"}
 
 @app.post("/face_detection/")
-async def save_detection(record: DetectionRecord):
-    db = client["face_detection_db"]
+async def save_detection(record: ScreenshotDetectionRecord):
+    db = client["face_detection"]
     collection = db["detections"]
     collection.insert_one(record.dict())
     return {"info": "Detection record saved"}
 
 @app.post("/fight_detection/")
-async def save_detection(record: DetectionRecord):
-    db = client["fight_detection_db"]
+async def save_detection(record: VideoDetectionRecord):
+    db = client["fight_detection"]
+    collection = db["detections"]
+    collection.insert_one(record.dict())
+    return {"info": "Detection record saved"}
+
+@app.post("/gun_detection/")
+async def save_detection(record: GunDetectionRecord):
+    db = client["gun_detection"]
     collection = db["detections"]
     collection.insert_one(record.dict())
     return {"info": "Detection record saved"}

@@ -1,16 +1,13 @@
 import argparse
 import time
 from pathlib import Path
-import os
-import sys
-sys.path.insert(0, 'F:\Workplace-monitoring-System\Writing_Activity_Model\yolo')
-
-
+import shutil
+import requests
 import cv2
 import torch
 import torch.backends.cudnn as cudnn
 from numpy import random
-
+import os
 from models.experimental import attempt_load
 from utils.datasets import LoadStreams, LoadImages
 from utils.general import check_img_size, check_requirements, check_imshow, non_max_suppression, apply_classifier, \
@@ -18,8 +15,9 @@ from utils.general import check_img_size, check_requirements, check_imshow, non_
 from utils.plots import plot_one_box
 from utils.torch_utils import select_device, load_classifier, time_synchronized, TracedModel
 
+output_dir = os.path.dirname(__file__)
 
-def detect(save_img=False):
+def detect(opt):
     source, weights, view_img, save_txt, imgsz, trace = opt.source, opt.weights, opt.view_img, opt.save_txt, opt.img_size, not opt.no_trace
     save_img = not opt.nosave and not source.endswith('.txt')  # save inference images
     webcam = source.isnumeric() or source.endswith('.txt') or source.lower().startswith(
@@ -28,6 +26,8 @@ def detect(save_img=False):
     # Directories
     save_dir = Path(increment_path(Path(opt.project) / opt.name, exist_ok=opt.exist_ok))  # increment run
     (save_dir / 'labels' if save_txt else save_dir).mkdir(parents=True, exist_ok=True)  # make dir
+    videos_dir = Path('Videos')  # Target directory for videos
+    videos_dir.mkdir(parents=True, exist_ok=True)  # Create target directory if not exists
 
     # Initialize
     set_logging()
@@ -71,6 +71,7 @@ def detect(save_img=False):
     old_img_b = 1
 
     t0 = time.time()
+    gun_detected = False  # Flag to track if a gun is detected
     for path, img, im0s, vid_cap in dataset:
         img = torch.from_numpy(img).to(device)
         img = img.half() if half else img.float()  # uint8 to fp16/32
@@ -88,7 +89,7 @@ def detect(save_img=False):
 
         # Inference
         t1 = time_synchronized()
-        with torch.no_grad():   # Calculating gradients would cause a GPU memory leak
+        with torch.no_grad():  # Calculating gradients would cause a GPU memory leak
             pred = model(img, augment=opt.augment)[0]
         t2 = time_synchronized()
 
@@ -120,6 +121,10 @@ def detect(save_img=False):
                     n = (det[:, -1] == c).sum()  # detections per class
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
 
+                # Check if any detection is a gun
+                if any(int(cls) == 0 for *xyxy, conf, cls in det):  # Assuming class 0 is the gun
+                    gun_detected = True
+
                 # Write results
                 for *xyxy, conf, cls in reversed(det):
                     if save_txt:  # Write to file
@@ -135,16 +140,20 @@ def detect(save_img=False):
             # Print time (inference + NMS)
             print(f'{s}Done. ({(1E3 * (t2 - t1)):.1f}ms) Inference, ({(1E3 * (t3 - t2)):.1f}ms) NMS')
 
+            # Add text "Gun was detected" if a gun is detected
+            if gun_detected:
+                cv2.putText(im0, "Gun was detected", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
+
             # Stream results
             if view_img:
                 cv2.imshow(str(p), im0)
                 cv2.waitKey(1)  # 1 millisecond
 
-            # Save results (image with detections)
+            # Save results (image with detections) only if a gun is detected
             if save_img:
                 if dataset.mode == 'image':
                     cv2.imwrite(save_path, im0)
-                    print(f" The image with the result is saved in: {save_path}")
+                    print(f"The image with the result is saved in: {save_path}")
                 else:  # 'video' or 'stream'
                     if vid_path != save_path:  # new video
                         vid_path = save_path
@@ -161,10 +170,56 @@ def detect(save_img=False):
                     vid_writer.write(im0)
 
     if save_txt or save_img:
-        s = f"\n{len(list(save_dir.glob('labels/*.txt')))} labels saved to {save_dir / 'labels'}" if save_txt else ''
-        #print(f"Results saved to {save_dir}{s}")
+        print(f"Results saved to {save_dir}")
+        if save_txt:
+            print(f'Labels saved to {save_dir / "labels"}')
+
+    # Move the output video to the Videos folder
+    if save_img:
+        for file in save_dir.glob('*.mp4'):
+            if isinstance(vid_writer, cv2.VideoWriter):
+                vid_writer.release()  # ensure the writer is released
+            shutil.move(str(file), str(videos_dir / file.name))
+            print(f"Moved {file.name} to {videos_dir}")
 
     print(f'Done. ({time.time() - t0:.3f}s)')
+    shutil.rmtree("exp")
+    detection_record = {
+        "name": "Gun Detection",
+        "video_path": output_dir+str(videos_dir)+"/"+str(file.name),
+        "timestamp": time.time()
+    }
+    response = requests.post("http://localhost:8000/gun_detection/", json=detection_record)
+    if response.status_code == 200:
+        print("Detection record saved successfully.")
+    else:
+        print("Failed to save detection record.")
+    
+
+
+def run_detection(weights, source, img_size=640, conf_thres=0.10, iou_thres=0.45, device='', view_img=False, save_txt=False, save_conf=False, nosave=False, classes=None, agnostic_nms=False, augment=False, project='runs/detect', name='Videos', exist_ok=False, no_trace=True):
+    class Opt:
+        def __init__(self, weights, source, img_size, conf_thres, iou_thres, device, view_img, save_txt, save_conf, nosave, classes, agnostic_nms, augment, project, name, exist_ok, no_trace):
+            self.weights = weights
+            self.source = source
+            self.img_size = img_size
+            self.conf_thres = conf_thres
+            self.iou_thres = iou_thres
+            self.device = device
+            self.view_img = view_img
+            self.save_txt = save_txt
+            self.save_conf = save_conf
+            self.nosave = nosave
+            self.classes = classes
+            self.agnostic_nms = agnostic_nms
+            self.augment = augment
+            self.project = project
+            self.name = name
+            self.exist_ok = exist_ok
+            self.no_trace = no_trace
+
+    opt = Opt(weights, source, img_size, conf_thres, iou_thres, device, view_img, save_txt, save_conf, nosave, classes, agnostic_nms, augment, project, name, exist_ok, no_trace)
+    detect(opt)
 
 
 if __name__ == '__main__':
@@ -189,12 +244,12 @@ if __name__ == '__main__':
     parser.add_argument('--no-trace', action='store_true', help='don`t trace model')
     opt = parser.parse_args()
     print(opt)
-    #check_requirements(exclude=('pycocotools', 'thop'))
+    # check_requirements(exclude=('pycocotools', 'thop'))
 
     with torch.no_grad():
         if opt.update:  # update all models (to fix SourceChangeWarning)
             for opt.weights in ['yolov7.pt']:
-                detect()
+                detect(opt)
                 strip_optimizer(opt.weights)
         else:
-            detect()
+            detect(opt)
