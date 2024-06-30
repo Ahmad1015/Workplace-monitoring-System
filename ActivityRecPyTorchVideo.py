@@ -1,3 +1,5 @@
+import os
+import shutil
 import torch
 import json
 from torchvision.transforms import Compose, Lambda
@@ -5,32 +7,36 @@ from torchvision.transforms._transforms_video import CenterCropVideo, NormalizeV
 from pytorchvideo.data.encoded_video import EncodedVideo
 from pytorchvideo.transforms import ApplyTransformToKey, ShortSideScale, UniformTemporalSubsample
 import urllib
-import subprocess
-from yolo.detect import detect
-
-
+import gc
+import cv2
+import requests
+import tempfile
 
 def ActivityRecognition(filename):
+    # Clear cache and free up memory
+    gc.collect()
+    torch.cuda.empty_cache()
     
-    # Device on which to run the model
+    # Device selection
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Using device: {device}")
 
-    # Load the pretrained model
+    # Load the pretrained SlowFast model
     model_name = "slowfast_r50"
     model = torch.hub.load("facebookresearch/pytorchvideo", model=model_name, pretrained=True)
     model = model.to(device)
     model = model.eval()
 
     # Load class names
+    json_url = "https://dl.fbaipublicfiles.com/pyslowfast/dataset/class_names/kinetics_classnames.json"
+    json_filename = "kinetics_classnames.json"
     try:
-        json_url = "https://dl.fbaipublicfiles.com/pyslowfast/dataset/class_names/kinetics_classnames.json"
-        json_filename = "kinetics_classnames.json"
         urllib.request.urlretrieve(json_url, json_filename)
-    except:
-        pass
-    with open(json_filename, "r") as f:
-        kinetics_classnames = json.load(f)
+        with open(json_filename, "r") as f:
+            kinetics_classnames = json.load(f)
+    except Exception as e:
+        print(f"Error downloading class names: {e}")
+        return
 
     kinetics_id_to_classname = {v: k for k, v in kinetics_classnames.items()}
 
@@ -45,9 +51,6 @@ def ActivityRecognition(filename):
     alpha = 4
 
     class PackPathway(torch.nn.Module):
-        def __init__(self):
-            super().__init__()
-
         def forward(self, frames: torch.Tensor):
             fast_pathway = frames
             slow_pathway = torch.index_select(
@@ -55,8 +58,7 @@ def ActivityRecognition(filename):
                 1,
                 torch.linspace(0, frames.shape[1] - 1, frames.shape[1] // alpha).long(),
             )
-            frame_list = [slow_pathway, fast_pathway]
-            return frame_list
+            return [slow_pathway, fast_pathway]
 
     transform = ApplyTransformToKey(
         key="video",
@@ -70,20 +72,22 @@ def ActivityRecognition(filename):
         ]),
     )
 
-    # Load the example video
-    video_path = f"{filename}"
-    video = EncodedVideo.from_path(video_path)
+    # Verify the video file exists
+    if not os.path.exists(filename):
+        print(f"Video file not found: {filename}")
+        return
 
-    # Define sliding window parameters
-    window_size = 4  # seconds per segment
-    overlap = 2  # seconds of overlap
-
-    # Duration and total frames
+    # Load the video
+    video = EncodedVideo.from_path(filename)
     total_duration = video.duration
     total_frames = int(total_duration * frames_per_second)
 
+    # Sliding window parameters
+    window_size = 6  # seconds per segment
+    overlap = 1  # seconds of overlap
+
     # Function to predict and aggregate results
-    def predict_windowed(video, start_sec, end_sec, window_size, overlap):
+    def predict_windowed(video, window_size, overlap):
         clip_duration = (num_frames * sampling_rate) / frames_per_second
         post_act = torch.nn.Softmax(dim=1)
         actions = []
@@ -92,55 +96,79 @@ def ActivityRecognition(filename):
             window_end = window_start + window_size
 
             # Load video segment
-            video_data = video.get_clip(start_sec=window_start, end_sec=window_end)
-            video_data = transform(video_data)
-            inputs = video_data["video"]
-            inputs = [i.to(device)[None, ...] for i in inputs]
+            try:
+                video_data = video.get_clip(start_sec=window_start, end_sec=window_end)
+                video_data = transform(video_data)
+                inputs = video_data["video"]
+                inputs = [i.to(device)[None, ...] for i in inputs]
 
-            # Predict actions
-            with torch.no_grad():
-                preds = model(inputs)
-                preds = post_act(preds)
-                pred_classes = preds.topk(k=5).indices[0].cpu().numpy()
-                pred_probs = preds.topk(k=5).values[0].cpu().numpy()
+                # Predict actions
+                with torch.no_grad():
+                    preds = model(inputs)
+                    preds = post_act(preds)
+                    pred_classes = preds.topk(k=5).indices[0].cpu().numpy()
+                    pred_probs = preds.topk(k=5).values[0].cpu().numpy()
 
-            # Store the segment's predictions
-            for i in range(len(pred_classes)):
-                class_name = kinetics_id_to_classname.get(int(pred_classes[i]), "Unknown")
-                actions.append((window_start, window_end, class_name, pred_probs[i]))
+                # Store the segment's predictions
+                for i in range(len(pred_classes)):
+                    class_name = kinetics_id_to_classname.get(int(pred_classes[i]), "Unknown")
+                    actions.append((window_start, window_end, class_name, pred_probs[i]))
+
+            except Exception as e:
+                print(f"Error processing window {window_start}-{window_end}s: {e}")
 
         return actions
 
     # Predict actions in windowed segments
-    predicted_actions = predict_windowed(video, 0, total_duration, window_size, overlap)
+    predicted_actions = predict_windowed(video, window_size, overlap)
 
-    # Display predictions
+    # Process detected actions
     for start, end, label, prob in predicted_actions:
-        print(f"From {start}s to {end}s: {label} (confidence: {prob:.2f})")
-    
-    with open(f"{filename}.txt", "w") as file:
-        for start, end, label, prob in predicted_actions:
-            if prob > 0.7:  # Only write actions with confidence above 0.7
-                file.write(f"From {start}s to {end}s: {label} (confidence: {prob:.2f})\n")
-    # Full path to detect.py
-    detect_script = r"F:\Workplace-monitoring-System\yolo\detect.py"
+        if label != "writing" and prob > 0.1:
+            print(f"Writing detected from {start}s to {end}s (confidence: {prob:.2f})")
+            
+            try:
+                # Save the clip with annotation
+                cap = cv2.VideoCapture(filename)
+                fourcc = cv2.VideoWriter_fourcc(*'XVID')
+                out_filename = f"{filename}_writing_{start}_{end}.avi"
+                out = cv2.VideoWriter(out_filename, fourcc, frames_per_second, (int(cap.get(3)), int(cap.get(4))))
 
-    # Full path to weights file
-    weights_path = r"F:\Workplace-monitoring-System\yolo\best.pt"
+                cap.set(cv2.CAP_PROP_POS_MSEC, start * 1000)
+                while cap.get(cv2.CAP_PROP_POS_MSEC) <= end * 1000:
+                    ret, frame = cap.read()
+                    if not ret:
+                        break
+                    cv2.putText(frame, 'Writing Detection', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
+                    out.write(frame)
 
-    
-    # Define the command and arguments
-    command = ["python", detect_script, "--weights", weights_path, "--source", filename]
+                cap.release()
+                out.release()
 
-    # Run the command
-    result = subprocess.run(command, capture_output=True, text=True)
+                # Move the video to the desired directory
+                script_dir = os.path.dirname(__file__)
+                video_output_dir = os.path.join(script_dir, 'Videos')
+                os.makedirs(video_output_dir, exist_ok=True)
+                final_path = os.path.join(video_output_dir, os.path.basename(out_filename))
+                shutil.move(out_filename, final_path)
 
-    # Print the output
-    print("Output from Yolo:")
-    print(result.stdout)
-    print(result.stderr)
+                # Post clip info to API
+                clip_info = {
+                    "filename": os.path.basename(final_path),
+                    "original_file": os.path.basename(filename),
+                    "start_time": start,
+                    "end_time": end,
+                    "confidence": float(prob),  # Convert to a JSON serializable type
+                    "video_path": final_path
+                }
 
-    
+                response = requests.post("http://localhost:8000/writing_detection/", json=clip_info)
+                if response.status_code == 200:
+                    print(f"Clip information saved successfully: {clip_info}")
+                else:
+                    print(f"Failed to save clip information: {response.text}")
 
-if __name__ == "__main__":
-    ActivityRecognition("processed_output_1.mp4")
+            except Exception as e:
+                print(f"Error saving clip: {e}")
+
+

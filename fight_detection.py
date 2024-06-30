@@ -18,6 +18,7 @@ from torchvision.transforms._functional_video import normalize
 from pytorchvideo.data.ava import AvaLabeledVideoFramePaths
 from pytorchvideo.models.hub import slow_r50_detection
 from pytorchvideo.data.encoded_video import EncodedVideo
+from ActivityRecPyTorchVideo import ActivityRecognition
 from detect import run_detection
 import gc
 
@@ -27,6 +28,14 @@ logging.basicConfig(filename='fight_detection.log', level=logging.INFO, format='
 
 async def fight_detection(filename):
     print("Inside Fight Detection")
+    gc.collect()
+    torch.cuda.empty_cache()
+    # Print GPU memory status
+    reserved_memory = torch.cuda.memory_reserved()
+    allocated_memory = torch.cuda.memory_allocated()
+    print(f"Reserved memory: {reserved_memory / 1e9:.2f} GB")
+    print(f"Allocated memory: {allocated_memory / 1e9:.2f} GB")
+
     logging.info(f"Started fight detection on: {filename}")
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -234,7 +243,11 @@ async def fight_detection(filename):
     logging.info(f"Fight detection completed for: {filename}")
     gc.collect()
     torch.cuda.empty_cache()
-    
+    # Print GPU memory status
+    reserved_memory = torch.cuda.memory_reserved()
+    allocated_memory = torch.cuda.memory_allocated()
+    print(f"Reserved memory: {reserved_memory / 1e9:.2f} GB")
+    print(f"Allocated memory: {allocated_memory / 1e9:.2f} GB")
     print("Going for Yolo Detection")
     # Call YOLOv7 detection on the original video file and save output in script directory
     run_detection(
@@ -253,4 +266,11 @@ async def fight_detection(filename):
         exist_ok=True,
         no_trace=True,
     )
-    os.remove(filename)
+    gc.collect()
+    torch.cuda.empty_cache()
+    print("Going into Activity Recognition")
+    ActivityRecognition(filename)
+    try:
+        os.remove(filename)
+    except:
+        print("Error removing video file")

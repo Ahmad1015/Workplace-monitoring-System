@@ -1,0 +1,932 @@
+2024-06-30 12:58:52,114 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 12:58:52,976 - INFO - Using device: cuda
+2024-06-30 12:58:53,544 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 12:58:53,545 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 12:58:53,545 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 12:58:53,685 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 12:58:53,770 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 12:58:53,776 - INFO - Input Video FPS: 15.0, Frame Size: 640x480
+2024-06-30 12:58:53,776 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 12:58:53,777 - INFO - VideoWriter initialized successfully.
+2024-06-30 12:58:54,524 - INFO - Detected 1 person(s) in frame.
+2024-06-30 12:58:54,731 - INFO - Finished generating predictions.
+2024-06-30 12:58:54,731 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 12:58:55,208 - INFO - Released video writer resources.
+2024-06-30 12:58:57,272 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 12:58:57,273 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 12:58:57,277 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 12:58:57,453 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 12:58:58,509 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 12:59:27,197 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 12:59:27,890 - INFO - Using device: cuda
+2024-06-30 12:59:28,525 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 12:59:28,525 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 12:59:28,653 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 12:59:28,836 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 12:59:28,842 - INFO - Input Video FPS: 15.0, Frame Size: 640x480
+2024-06-30 12:59:28,843 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 12:59:28,844 - INFO - VideoWriter initialized successfully.
+2024-06-30 12:59:29,367 - INFO - Detected 2 person(s) in frame.
+2024-06-30 12:59:29,517 - INFO - Finished generating predictions.
+2024-06-30 12:59:29,517 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 12:59:30,007 - INFO - Released video writer resources.
+2024-06-30 12:59:32,058 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 12:59:32,058 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 12:59:32,062 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 12:59:32,229 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 12:59:33,266 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:00:09,359 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:00:10,065 - INFO - Using device: cuda
+2024-06-30 13:00:10,650 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:00:10,650 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:00:10,724 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:00:10,853 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:00:10,859 - INFO - Input Video FPS: 15.0, Frame Size: 640x480
+2024-06-30 13:00:10,859 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_3.mp4
+2024-06-30 13:00:10,861 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:00:11,668 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:00:11,990 - INFO - Finished generating predictions.
+2024-06-30 13:00:11,991 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:00:12,455 - INFO - Released video writer resources.
+2024-06-30 13:00:14,509 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:00:14,509 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:00:14,513 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:00:14,671 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:00:16,076 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:02:00,821 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:02:01,602 - INFO - Using device: cuda
+2024-06-30 13:02:02,144 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:02:02,145 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 13:02:02,145 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:02:02,290 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:02:02,365 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:02:02,372 - INFO - Input Video FPS: 15.0, Frame Size: 640x480
+2024-06-30 13:02:02,372 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 13:02:02,373 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:02:03,092 - INFO - Detected 2 person(s) in frame.
+2024-06-30 13:02:03,276 - INFO - Finished generating predictions.
+2024-06-30 13:02:03,276 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:02:03,714 - INFO - Released video writer resources.
+2024-06-30 13:02:05,789 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:02:05,789 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:02:05,793 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:02:05,950 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:02:06,937 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:02:44,214 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:02:44,956 - INFO - Using device: cuda
+2024-06-30 13:02:45,595 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:02:45,596 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:02:45,749 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:02:45,925 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:02:45,933 - INFO - Input Video FPS: 15.0, Frame Size: 640x480
+2024-06-30 13:02:45,933 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 13:02:45,934 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:02:46,443 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:02:46,613 - INFO - Finished generating predictions.
+2024-06-30 13:02:46,613 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:02:47,207 - INFO - Released video writer resources.
+2024-06-30 13:02:49,258 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:02:49,259 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:02:49,263 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:02:49,416 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:02:50,440 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:03:54,175 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:03:54,897 - INFO - Using device: cuda
+2024-06-30 13:03:55,443 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:03:55,444 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 13:03:55,444 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:03:55,524 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:03:55,606 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:03:55,613 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:03:55,613 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 13:03:55,614 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:03:56,330 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:03:56,510 - INFO - Finished generating predictions.
+2024-06-30 13:03:56,510 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:03:56,939 - INFO - Released video writer resources.
+2024-06-30 13:03:58,964 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:03:58,965 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:03:58,968 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:03:59,131 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:04:00,026 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:04:33,414 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:04:34,243 - INFO - Using device: cuda
+2024-06-30 13:04:34,903 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:04:34,904 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:04:35,062 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:04:35,183 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:04:35,189 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:04:35,189 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 13:04:35,190 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:04:35,634 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:04:35,798 - INFO - Finished generating predictions.
+2024-06-30 13:04:35,798 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:04:36,292 - INFO - Released video writer resources.
+2024-06-30 13:04:38,338 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:04:38,339 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:04:38,343 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:04:38,504 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:04:39,581 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:05:12,366 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:05:13,145 - INFO - Using device: cuda
+2024-06-30 13:05:13,837 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:05:13,837 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:05:13,916 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:05:14,053 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:05:14,059 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:05:14,060 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_3.mp4
+2024-06-30 13:05:14,060 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:05:14,547 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:05:14,718 - INFO - Finished generating predictions.
+2024-06-30 13:05:14,719 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:05:15,136 - INFO - Released video writer resources.
+2024-06-30 13:05:17,157 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:05:17,158 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:05:17,161 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:05:17,311 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:05:18,167 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:08:13,535 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:08:14,248 - INFO - Using device: cuda
+2024-06-30 13:08:14,816 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:08:14,816 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 13:08:14,816 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:08:14,892 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:08:14,968 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:08:14,978 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:08:14,978 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 13:08:14,979 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:08:15,697 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:08:15,864 - INFO - Finished generating predictions.
+2024-06-30 13:08:15,864 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:08:16,257 - INFO - Released video writer resources.
+2024-06-30 13:08:18,336 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:08:18,337 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:08:18,341 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:08:18,498 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:08:19,340 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:08:51,159 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:08:51,868 - INFO - Using device: cuda
+2024-06-30 13:08:52,543 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:08:52,543 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:08:52,628 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:08:52,790 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:08:52,799 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:08:52,799 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 13:08:52,800 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:08:53,243 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:08:53,408 - INFO - Finished generating predictions.
+2024-06-30 13:08:53,408 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:08:53,783 - INFO - Released video writer resources.
+2024-06-30 13:08:55,838 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:08:55,838 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:08:55,841 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:08:56,013 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:08:56,990 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:09:27,952 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:09:28,664 - INFO - Using device: cuda
+2024-06-30 13:09:29,231 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:09:29,231 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:09:29,303 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:09:29,421 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:09:29,428 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:09:29,428 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_3.mp4
+2024-06-30 13:09:29,429 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:09:30,210 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:09:30,555 - INFO - Finished generating predictions.
+2024-06-30 13:09:30,555 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:09:30,927 - INFO - Released video writer resources.
+2024-06-30 13:09:32,971 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:09:32,971 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:09:32,974 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:09:33,131 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:09:34,283 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:15:42,273 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:15:43,058 - INFO - Using device: cuda
+2024-06-30 13:15:43,630 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:15:43,631 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 13:15:43,631 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:15:43,737 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:15:43,816 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:15:43,825 - INFO - Input Video FPS: 10.0, Frame Size: 640x480
+2024-06-30 13:15:43,825 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 13:15:43,826 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:15:44,546 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:15:44,717 - INFO - Finished generating predictions.
+2024-06-30 13:15:44,717 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:15:44,889 - INFO - Released video writer resources.
+2024-06-30 13:15:46,945 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:15:46,945 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:15:46,948 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:15:47,123 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:15:48,127 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:16:07,479 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:16:08,286 - INFO - Using device: cuda
+2024-06-30 13:16:08,864 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:16:08,864 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:16:08,970 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:16:09,092 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:16:09,097 - INFO - Input Video FPS: 10.0, Frame Size: 640x480
+2024-06-30 13:16:09,098 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 13:16:09,099 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:16:09,681 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:16:09,845 - INFO - Finished generating predictions.
+2024-06-30 13:16:09,845 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:16:10,010 - INFO - Released video writer resources.
+2024-06-30 13:16:12,067 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:16:12,068 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:16:12,071 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:16:12,233 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:16:13,157 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:16:31,562 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:16:32,336 - INFO - Using device: cuda
+2024-06-30 13:16:32,922 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:16:32,923 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:16:33,071 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:16:33,193 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:16:33,199 - INFO - Input Video FPS: 10.0, Frame Size: 640x480
+2024-06-30 13:16:33,199 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_3.mp4
+2024-06-30 13:16:33,200 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:16:33,678 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:16:33,838 - INFO - Finished generating predictions.
+2024-06-30 13:16:33,839 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:16:34,043 - INFO - Released video writer resources.
+2024-06-30 13:16:36,104 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:16:36,105 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:16:36,107 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:16:36,257 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:16:37,171 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:24:23,264 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:24:24,103 - INFO - Using device: cuda
+2024-06-30 13:24:24,644 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:24:24,646 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 13:24:24,646 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:24:24,785 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:24:24,868 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:24:24,874 - INFO - Input Video FPS: 10.0, Frame Size: 640x480
+2024-06-30 13:24:24,874 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 13:24:24,875 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:24:25,708 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:24:25,955 - INFO - Finished generating predictions.
+2024-06-30 13:24:25,955 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:24:26,136 - INFO - Released video writer resources.
+2024-06-30 13:24:28,201 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:24:28,202 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:24:28,204 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:24:28,357 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:24:29,345 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:24:44,519 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:24:45,166 - INFO - Using device: cuda
+2024-06-30 13:24:45,712 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:24:45,712 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:24:45,787 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:24:45,862 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:24:45,877 - INFO - Input Video FPS: 10.0, Frame Size: 640x480
+2024-06-30 13:24:45,877 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 13:24:45,878 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:24:46,204 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:24:46,354 - INFO - Finished generating predictions.
+2024-06-30 13:24:46,354 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:24:46,534 - INFO - Released video writer resources.
+2024-06-30 13:24:48,589 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:24:48,589 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:24:48,592 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:24:48,752 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:24:49,636 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:25:02,997 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:25:03,625 - INFO - Using device: cuda
+2024-06-30 13:25:04,161 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:25:04,161 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:25:04,236 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:25:04,314 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:25:04,321 - INFO - Input Video FPS: 10.0, Frame Size: 640x480
+2024-06-30 13:25:04,321 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_3.mp4
+2024-06-30 13:25:04,322 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:25:04,656 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:25:04,802 - INFO - Finished generating predictions.
+2024-06-30 13:25:04,802 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:25:04,971 - INFO - Released video writer resources.
+2024-06-30 13:25:07,017 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:25:07,018 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:25:07,022 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:25:07,178 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:25:08,107 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:26:34,349 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_4.mp4
+2024-06-30 13:26:35,069 - INFO - Using device: cuda
+2024-06-30 13:26:35,684 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:26:35,684 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:26:35,776 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:26:35,906 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_4.mp4
+2024-06-30 13:26:35,912 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:26:35,912 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_4.mp4
+2024-06-30 13:26:35,913 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:26:36,386 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:26:36,543 - INFO - Finished generating predictions.
+2024-06-30 13:26:36,543 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:26:36,904 - INFO - Released video writer resources.
+2024-06-30 13:26:38,952 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:26:38,953 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_4.mp4
+2024-06-30 13:26:38,957 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_4.mp4
+2024-06-30 13:26:39,118 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:26:39,937 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:27:09,587 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_5.mp4
+2024-06-30 13:27:10,239 - INFO - Using device: cuda
+2024-06-30 13:27:10,791 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:27:10,791 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:27:10,868 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:27:10,960 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_5.mp4
+2024-06-30 13:27:10,976 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:27:10,976 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_5.mp4
+2024-06-30 13:27:10,978 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:27:11,324 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:27:11,480 - INFO - Finished generating predictions.
+2024-06-30 13:27:11,480 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:27:11,898 - INFO - Released video writer resources.
+2024-06-30 13:27:13,953 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:27:13,954 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_5.mp4
+2024-06-30 13:27:13,957 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_5.mp4
+2024-06-30 13:27:14,119 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:27:14,950 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:27:40,139 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_6.mp4
+2024-06-30 13:27:40,858 - INFO - Using device: cuda
+2024-06-30 13:27:41,460 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:27:41,461 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:27:41,535 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:27:41,654 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_6.mp4
+2024-06-30 13:27:41,660 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:27:41,660 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_6.mp4
+2024-06-30 13:27:41,662 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:27:42,084 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:27:42,245 - INFO - Finished generating predictions.
+2024-06-30 13:27:42,245 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:27:42,739 - INFO - Released video writer resources.
+2024-06-30 13:27:44,791 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:27:44,792 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_6.mp4
+2024-06-30 13:27:44,795 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_6.mp4
+2024-06-30 13:27:44,958 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:27:45,916 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:31:51,335 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:31:52,093 - INFO - Using device: cuda
+2024-06-30 13:31:52,632 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:31:52,632 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 13:31:52,632 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:31:52,756 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:31:52,831 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:31:52,837 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:31:52,837 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 13:31:52,838 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:31:53,534 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:31:53,696 - INFO - Finished generating predictions.
+2024-06-30 13:31:53,696 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:31:54,080 - INFO - Released video writer resources.
+2024-06-30 13:31:56,140 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:31:56,141 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:31:56,145 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:31:56,324 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:31:57,263 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:32:28,219 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:32:28,831 - INFO - Using device: cuda
+2024-06-30 13:32:29,362 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:32:29,362 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:32:29,439 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:32:29,523 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:32:29,529 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:32:29,530 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 13:32:29,530 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:32:29,865 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:32:30,018 - INFO - Finished generating predictions.
+2024-06-30 13:32:30,018 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:32:30,396 - INFO - Released video writer resources.
+2024-06-30 13:32:32,447 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:32:32,448 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:32:32,451 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:32:32,603 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:32:33,427 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:33:05,335 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:33:05,944 - INFO - Using device: cuda
+2024-06-30 13:33:06,465 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:33:06,465 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:33:06,538 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:33:06,619 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:33:06,625 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:33:06,625 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_3.mp4
+2024-06-30 13:33:06,626 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:33:06,954 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:33:07,105 - INFO - Finished generating predictions.
+2024-06-30 13:33:07,105 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:33:07,472 - INFO - Released video writer resources.
+2024-06-30 13:33:09,519 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:33:09,520 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:33:09,522 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:33:09,679 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:33:10,510 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:44:59,822 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:45:00,639 - INFO - Using device: cuda
+2024-06-30 13:45:01,188 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:45:01,189 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 13:45:01,189 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:45:01,328 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:45:01,411 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:45:01,417 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:45:01,417 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 13:45:01,417 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:45:02,124 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:45:02,289 - INFO - Finished generating predictions.
+2024-06-30 13:45:02,289 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:45:02,675 - INFO - Released video writer resources.
+2024-06-30 13:45:04,699 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:45:04,700 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:45:04,703 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:45:04,867 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:45:05,810 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:47:43,440 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:47:44,244 - INFO - Using device: cuda
+2024-06-30 13:47:44,786 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:47:44,787 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 13:47:44,787 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:47:44,920 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:47:44,993 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:47:44,999 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:47:44,999 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 13:47:45,000 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:47:45,699 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:47:45,860 - INFO - Finished generating predictions.
+2024-06-30 13:47:45,860 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:47:46,234 - INFO - Released video writer resources.
+2024-06-30 13:47:48,287 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:47:48,288 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:47:48,292 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:47:48,468 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:47:49,397 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:48:17,424 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:48:18,151 - INFO - Using device: cuda
+2024-06-30 13:48:18,752 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:48:18,753 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:48:18,834 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:48:18,991 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:48:18,997 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:48:18,997 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 13:48:18,998 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:48:19,535 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:48:19,694 - INFO - Finished generating predictions.
+2024-06-30 13:48:19,695 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:48:20,072 - INFO - Released video writer resources.
+2024-06-30 13:48:22,107 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:48:22,107 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:48:22,111 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:48:22,263 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:48:23,113 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:49:28,233 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:49:29,050 - INFO - Using device: cuda
+2024-06-30 13:49:29,565 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:49:29,566 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 13:49:29,566 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:49:29,706 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:49:29,781 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:49:29,788 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:49:29,788 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 13:49:29,789 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:49:30,483 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:49:30,646 - INFO - Finished generating predictions.
+2024-06-30 13:49:30,647 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:49:31,031 - INFO - Released video writer resources.
+2024-06-30 13:49:33,104 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:49:33,105 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:49:33,108 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:49:33,270 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:49:34,187 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:50:14,643 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:50:15,398 - INFO - Using device: cuda
+2024-06-30 13:50:16,014 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:50:16,014 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:50:16,152 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:50:16,266 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:50:16,272 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:50:16,273 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 13:50:16,274 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:50:16,877 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:50:17,030 - INFO - Finished generating predictions.
+2024-06-30 13:50:17,030 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:50:17,386 - INFO - Released video writer resources.
+2024-06-30 13:50:19,434 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:50:19,435 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:50:19,438 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:50:19,586 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:50:20,479 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:51:06,336 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:51:07,163 - INFO - Using device: cuda
+2024-06-30 13:51:07,769 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:51:07,769 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:51:07,917 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:51:08,052 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:51:08,060 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:51:08,060 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_3.mp4
+2024-06-30 13:51:08,061 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:51:08,662 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:51:08,841 - INFO - Finished generating predictions.
+2024-06-30 13:51:08,841 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:51:09,221 - INFO - Released video writer resources.
+2024-06-30 13:51:11,282 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:51:11,282 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:51:11,286 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:51:11,455 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:51:12,415 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:52:38,589 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:52:39,391 - INFO - Using device: cuda
+2024-06-30 13:52:39,917 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:52:39,917 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 13:52:39,917 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:52:40,019 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:52:40,092 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:52:40,097 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:52:40,098 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 13:52:40,098 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:52:40,777 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:52:40,940 - INFO - Finished generating predictions.
+2024-06-30 13:52:40,940 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:52:41,294 - INFO - Released video writer resources.
+2024-06-30 13:52:43,351 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:52:43,352 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:52:43,355 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:52:43,556 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:52:44,560 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:53:41,399 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:53:42,106 - INFO - Using device: cuda
+2024-06-30 13:53:42,673 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:53:42,673 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:53:42,764 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:53:42,876 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:53:42,881 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:53:42,881 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 13:53:42,882 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:53:43,465 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:53:43,617 - INFO - Finished generating predictions.
+2024-06-30 13:53:43,617 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:53:43,973 - INFO - Released video writer resources.
+2024-06-30 13:53:46,022 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:53:46,023 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:53:46,026 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:53:46,180 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:53:46,971 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:54:39,994 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:54:40,688 - INFO - Using device: cuda
+2024-06-30 13:54:41,243 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:54:41,243 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:54:41,335 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:54:41,423 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:54:41,429 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:54:41,429 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_3.mp4
+2024-06-30 13:54:41,430 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:54:41,757 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:54:41,906 - INFO - Finished generating predictions.
+2024-06-30 13:54:41,906 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:54:42,255 - INFO - Released video writer resources.
+2024-06-30 13:54:44,303 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:54:44,303 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:54:44,306 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:54:44,478 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:54:45,371 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:57:35,005 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:57:35,759 - INFO - Using device: cuda
+2024-06-30 13:57:36,308 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:57:36,309 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 13:57:36,309 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:57:36,395 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:57:36,471 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:57:36,477 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:57:36,477 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 13:57:36,477 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:57:37,153 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:57:37,315 - INFO - Finished generating predictions.
+2024-06-30 13:57:37,315 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:57:37,669 - INFO - Released video writer resources.
+2024-06-30 13:57:39,706 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:57:39,706 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 13:57:39,710 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:57:39,884 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:57:40,737 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:58:09,717 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:58:10,445 - INFO - Using device: cuda
+2024-06-30 13:58:11,057 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:58:11,058 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:58:11,143 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:58:11,226 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:58:11,231 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:58:11,231 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 13:58:11,232 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:58:11,553 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:58:11,698 - INFO - Finished generating predictions.
+2024-06-30 13:58:11,699 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:58:12,037 - INFO - Released video writer resources.
+2024-06-30 13:58:14,084 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:58:14,084 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 13:58:14,088 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 13:58:14,232 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:58:15,021 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:58:44,305 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:58:45,104 - INFO - Using device: cuda
+2024-06-30 13:58:45,721 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:58:45,721 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:58:45,876 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:58:45,978 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:58:45,985 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 13:58:45,986 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_3.mp4
+2024-06-30 13:58:45,987 - INFO - VideoWriter initialized successfully.
+2024-06-30 13:58:46,365 - INFO - Detected 1 person(s) in frame.
+2024-06-30 13:58:46,523 - INFO - Finished generating predictions.
+2024-06-30 13:58:46,524 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 13:58:46,936 - INFO - Released video writer resources.
+2024-06-30 13:58:48,993 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 13:58:48,993 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 13:58:48,998 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 13:58:49,164 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 13:58:50,276 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 13:59:58,487 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 13:59:59,207 - INFO - Using device: cuda
+2024-06-30 13:59:59,730 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 13:59:59,730 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 13:59:59,730 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 13:59:59,800 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 13:59:59,873 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 14:00:01,937 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 14:00:01,938 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 14:00:01,938 - INFO - VideoWriter initialized successfully.
+2024-06-30 14:00:02,657 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:00:02,847 - INFO - Finished generating predictions.
+2024-06-30 14:00:02,848 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 14:00:03,201 - INFO - Released video writer resources.
+2024-06-30 14:00:05,272 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 14:00:05,273 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 14:00:05,277 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 14:00:05,511 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 14:00:06,403 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 14:00:28,787 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 14:00:29,490 - INFO - Using device: cuda
+2024-06-30 14:00:30,036 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 14:00:30,037 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 14:00:30,143 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 14:00:30,216 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 14:00:30,221 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 14:00:30,221 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 14:00:30,222 - INFO - VideoWriter initialized successfully.
+2024-06-30 14:00:30,549 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:00:30,696 - INFO - Finished generating predictions.
+2024-06-30 14:00:30,696 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 14:00:31,025 - INFO - Released video writer resources.
+2024-06-30 14:00:33,056 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 14:00:33,057 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 14:00:33,061 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 14:00:33,208 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 14:00:34,002 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 14:01:58,672 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 14:01:59,539 - INFO - Using device: cuda
+2024-06-30 14:02:00,104 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 14:02:00,105 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 14:02:00,105 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 14:02:00,239 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 14:02:00,311 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 14:02:00,317 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 14:02:00,317 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 14:02:00,318 - INFO - VideoWriter initialized successfully.
+2024-06-30 14:02:01,012 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:02:01,771 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:02:02,910 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:02:05,077 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:02:05,825 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:02:08,168 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:02:10,103 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:02:13,524 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:02:15,359 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:02:17,387 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:02:17,697 - INFO - Finished generating predictions.
+2024-06-30 14:02:17,697 - INFO - No fight detected in the video.
+2024-06-30 14:02:17,701 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 14:02:17,706 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 14:02:17,915 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 14:02:19,253 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 14:02:48,045 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 14:02:48,783 - INFO - Using device: cuda
+2024-06-30 14:02:49,390 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 14:02:49,390 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 14:02:49,501 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 14:02:49,577 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 14:02:49,583 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 14:02:49,583 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 14:02:49,584 - INFO - VideoWriter initialized successfully.
+2024-06-30 14:02:49,924 - INFO - Detected 0 person(s) in frame.
+2024-06-30 14:02:50,283 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:02:50,457 - INFO - Finished generating predictions.
+2024-06-30 14:02:50,457 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 14:02:50,877 - INFO - Released video writer resources.
+2024-06-30 14:02:52,909 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 14:02:52,909 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 14:02:52,915 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 14:02:53,059 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 14:02:53,912 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 14:03:17,057 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 14:03:17,664 - INFO - Using device: cuda
+2024-06-30 14:03:18,175 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 14:03:18,175 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 14:03:18,246 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 14:03:18,319 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 14:03:18,326 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 14:03:18,326 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_3.mp4
+2024-06-30 14:03:18,327 - INFO - VideoWriter initialized successfully.
+2024-06-30 14:03:18,657 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:03:20,330 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:03:21,183 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:03:22,678 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:03:24,537 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:03:25,381 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:03:27,348 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:03:29,273 - INFO - Detected 0 person(s) in frame.
+2024-06-30 14:03:30,824 - INFO - Detected 0 person(s) in frame.
+2024-06-30 14:03:32,455 - INFO - Detected 0 person(s) in frame.
+2024-06-30 14:03:32,456 - INFO - Finished generating predictions.
+2024-06-30 14:03:32,456 - INFO - No fight detected in the video.
+2024-06-30 14:03:32,460 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 14:03:32,465 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 14:03:32,643 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 14:03:33,466 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 14:12:39,228 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 14:12:40,043 - INFO - Using device: cuda
+2024-06-30 14:12:40,560 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 14:12:40,561 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 14:12:40,561 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 14:12:40,706 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 14:12:40,781 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 14:12:40,787 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 14:12:40,787 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 14:12:40,788 - INFO - VideoWriter initialized successfully.
+2024-06-30 14:12:41,494 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:12:42,517 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:12:43,028 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:12:43,178 - INFO - Finished generating predictions.
+2024-06-30 14:12:43,178 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 14:12:43,647 - INFO - Released video writer resources.
+2024-06-30 14:12:45,699 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 14:12:45,700 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 14:12:45,706 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 14:12:45,897 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 14:12:46,886 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 14:15:13,687 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 14:15:14,497 - INFO - Using device: cuda
+2024-06-30 14:15:15,040 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 14:15:15,040 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 14:15:15,041 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 14:15:15,181 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 14:15:15,256 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 14:15:15,262 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 14:15:15,262 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 14:15:15,263 - INFO - VideoWriter initialized successfully.
+2024-06-30 14:15:15,956 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:15:16,118 - INFO - Finished generating predictions.
+2024-06-30 14:15:16,118 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 14:15:16,507 - INFO - Released video writer resources.
+2024-06-30 14:15:18,565 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 14:15:18,565 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 14:15:18,569 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 14:15:18,738 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 14:15:19,696 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 14:18:53,098 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 14:18:53,924 - INFO - Using device: cuda
+2024-06-30 14:18:54,460 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 14:18:54,461 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 14:18:54,461 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 14:18:54,593 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 14:18:54,664 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 14:18:54,793 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 14:18:54,793 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 14:18:54,795 - INFO - VideoWriter initialized successfully.
+2024-06-30 14:18:55,472 - INFO - Detected 0 person(s) in frame.
+2024-06-30 14:18:55,811 - INFO - Detected 2 person(s) in frame.
+2024-06-30 14:18:56,326 - INFO - Detected 3 person(s) in frame.
+2024-06-30 14:18:56,763 - INFO - Finished generating predictions.
+2024-06-30 14:18:56,763 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 14:18:57,212 - INFO - Released video writer resources.
+2024-06-30 14:18:59,285 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 14:18:59,286 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 14:18:59,291 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 14:18:59,491 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 14:19:00,627 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 14:19:22,467 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 14:19:23,176 - INFO - Using device: cuda
+2024-06-30 14:19:23,744 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 14:19:23,744 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 14:19:23,844 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 14:19:23,924 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 14:19:23,932 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 14:19:23,932 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 14:19:23,933 - INFO - VideoWriter initialized successfully.
+2024-06-30 14:19:24,264 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:19:24,415 - INFO - Finished generating predictions.
+2024-06-30 14:19:24,415 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 14:19:24,856 - INFO - Released video writer resources.
+2024-06-30 14:19:26,893 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 14:19:26,894 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 14:19:26,899 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 14:19:27,088 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 14:19:28,137 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 14:19:47,287 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 14:19:48,011 - INFO - Using device: cuda
+2024-06-30 14:19:48,599 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 14:19:48,599 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 14:19:48,742 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 14:19:48,833 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 14:19:48,839 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 14:19:48,840 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_3.mp4
+2024-06-30 14:19:48,840 - INFO - VideoWriter initialized successfully.
+2024-06-30 14:19:49,175 - INFO - Detected 0 person(s) in frame.
+2024-06-30 14:19:49,508 - INFO - Detected 0 person(s) in frame.
+2024-06-30 14:19:49,834 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:19:49,997 - INFO - Finished generating predictions.
+2024-06-30 14:19:49,997 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 14:19:50,408 - INFO - Released video writer resources.
+2024-06-30 14:19:52,426 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 14:19:52,427 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_3.mp4
+2024-06-30 14:19:52,432 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_3.mp4
+2024-06-30 14:19:52,578 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 14:19:53,409 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 14:20:58,708 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 14:20:59,509 - INFO - Using device: cuda
+2024-06-30 14:21:00,031 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 14:21:00,032 - INFO - URL https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl cached in C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl
+2024-06-30 14:21:00,032 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 14:21:00,175 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 14:21:00,250 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 14:21:00,256 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 14:21:00,256 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_1.mp4
+2024-06-30 14:21:00,257 - INFO - VideoWriter initialized successfully.
+2024-06-30 14:21:00,949 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:21:01,110 - INFO - Finished generating predictions.
+2024-06-30 14:21:01,110 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 14:21:01,517 - INFO - Released video writer resources.
+2024-06-30 14:21:03,562 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 14:21:03,563 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_1.mp4
+2024-06-30 14:21:03,566 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_1.mp4
+2024-06-30 14:21:03,722 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 14:21:04,639 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients
+2024-06-30 14:21:34,929 - INFO - Started fight detection on: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 14:21:35,668 - INFO - Using device: cuda
+2024-06-30 14:21:36,215 - INFO - [DetectionCheckpointer] Loading from https://dl.fbaipublicfiles.com/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl ...
+2024-06-30 14:21:36,216 - INFO - [Checkpointer] Loading from C:\Users\Ahmad/.torch/iopath_cache\detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458\model_final_280758.pkl ...
+2024-06-30 14:21:36,346 - INFO - Reading a file from 'Detectron2 Model Zoo'
+2024-06-30 14:21:36,420 - INFO - Made a copy of the original video: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 14:21:36,425 - INFO - Input Video FPS: 13.0, Frame Size: 640x480
+2024-06-30 14:21:36,425 - INFO - Output video will be saved to: d:\Workplace-monitoring-System\processed_copy2_output_2.mp4
+2024-06-30 14:21:36,426 - INFO - VideoWriter initialized successfully.
+2024-06-30 14:21:36,752 - INFO - Detected 1 person(s) in frame.
+2024-06-30 14:21:36,902 - INFO - Finished generating predictions.
+2024-06-30 14:21:36,903 - INFO - Fight detected. Preparing to save the video.
+2024-06-30 14:21:37,317 - INFO - Released video writer resources.
+2024-06-30 14:21:39,357 - INFO - Fight detection sent to FastAPI. Response: {'info': 'Detection record saved'}
+2024-06-30 14:21:39,358 - INFO - Deleted the original video copy: d:\Workplace-monitoring-System\copy_copy2_output_2.mp4
+2024-06-30 14:21:39,361 - INFO - Fight detection completed for: d:\Workplace-monitoring-System\copy2_output_2.mp4
+2024-06-30 14:21:39,632 - INFO - YOLOR  b005470 torch 2.0.1+cu118 CUDA:cuda (NVIDIA GeForce GTX 960, 2047.875MB)
+
+2024-06-30 14:21:40,695 - INFO - Model Summary: 314 layers, 36492560 parameters, 6194944 gradients

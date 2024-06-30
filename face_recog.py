@@ -9,7 +9,7 @@ import os
 
 output_dir = os.path.dirname(__file__)
 
-async def face_detection(filename, frame_skip=15):
+async def face_detection(filename, frame_skip=10):
     # Load a sample picture and learn how to recognize it.
     try:
         known_image = face_recognition.load_image_file("Official_photo.jpeg")

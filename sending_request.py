@@ -4,7 +4,7 @@ import time
 url = 'http://localhost:8000/record_video/'
 data = {
     "duration": 10,
-    "fps": 15,
+    "fps": 13,
     "ip_address": "192.168.10.3",
     "port": 4747
 }

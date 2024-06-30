@@ -35,6 +35,14 @@ class GunDetectionRecord(BaseModel):
     video_path: str
     timestamp: datetime
 
+class WritingDetectionRecord(BaseModel):
+    filename: str
+    original_file: str
+    start_time: int
+    end_time: int
+    confidence: float
+    video_path: str
+
 @app.on_event("startup")
 def startup_event():
     print("Starting worker at startup")
@@ -70,6 +78,13 @@ async def save_detection(record: VideoDetectionRecord):
 @app.post("/gun_detection/")
 async def save_detection(record: GunDetectionRecord):
     db = client["gun_detection"]
+    collection = db["detections"]
+    collection.insert_one(record.dict())
+    return {"info": "Detection record saved"}
+
+@app.post("/writing_detection/")
+async def save_detection(record: WritingDetectionRecord):
+    db = client["writing_detection"]
     collection = db["detections"]
     collection.insert_one(record.dict())
     return {"info": "Detection record saved"}
