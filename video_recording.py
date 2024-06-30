@@ -1,17 +1,16 @@
 import cv2
-import time
 import os
-import asyncio
-from concurrent.futures import ThreadPoolExecutor
-from face_recog import face_detection  
-from fight_detection import fight_detection 
 import shutil
-from fastapi import FastAPI, BackgroundTasks
-from pydantic import BaseModel
-import uvicorn
+from concurrent.futures import ThreadPoolExecutor
+from face_recog import face_detection
+from fight_detection import fight_detection
+import threading
+import asyncio
+import queue
 
 # Define the Output Videos directory relative to the current script's location
 output_dir = os.path.dirname(__file__)
+video_queue = queue.Queue()
 
 def record_video(filename, duration=10, fps=30, ip_address=0):
     print(f"Started recording video: {filename}")
@@ -58,17 +57,21 @@ def record_video(filename, duration=10, fps=30, ip_address=0):
 
     return copy1, copy2
 
-async def process_video(model, filename):
+import asyncio
+
+def process_video(model, filename):
+    print(f"Inside Process Video for model {model} on file {filename}")
     if model == 'face_detection':
         print(f"Started face detection on: {filename}")
-        await face_detection(filename)
+        asyncio.run(face_detection(filename))
         print(f"Completed face detection on: {filename}")
     elif model == 'fight_detection':
         print(f"Started fight detection on: {filename}")
-        await fight_detection(filename)
+        asyncio.run(fight_detection(filename))
         print(f"Completed fight detection on: {filename}")
 
-async def delete_video(filename):
+
+def delete_video(filename):
     print(f"Attempting to delete video: {filename}")
     try:
         os.remove(filename)
@@ -76,17 +79,35 @@ async def delete_video(filename):
     except OSError as e:
         print(f"Error deleting video {filename}: {e}")
 
-async def run_process_video(model, filename):
-    await process_video(model, filename)
-
-async def main_record_and_process(filename, duration, fps, ip_address):
+def main_record_and_process(filename, duration, fps, ip_address):
     print("Recording video")
     copy1, copy2 = record_video(filename, duration, fps, ip_address)
-    print("Recording completed. Processing videos")
-    with ThreadPoolExecutor() as executor:
-        loop = asyncio.get_event_loop()
-        tasks = [
-            loop.run_in_executor(executor, asyncio.run, run_process_video('face_detection', copy1)),
-            loop.run_in_executor(executor, asyncio.run, run_process_video('fight_detection', copy2))
-        ]
-        await asyncio.gather(*tasks)
+    print("Recording completed. Adding videos to queue")
+    video_queue.put((copy1, 'face_detection'))
+    video_queue.put((copy2, 'fight_detection'))
+    print(f"Queue now contains: {list(video_queue.queue)}")  # Print current queue status
+
+def worker(executor):
+    print("Worker started")
+    while True:
+        print("Worker waiting for items in the queue")
+        filename, model = video_queue.get()
+        try:
+            print(f"Worker processing {filename} with model {model}")
+            future = executor.submit(process_video, model, filename)
+            future.result()  # Wait for the processing to complete
+        finally:
+            video_queue.task_done()
+            delete_video(filename)
+            print(f"Worker finished processing {filename} with model {model}")
+
+def start_worker():
+    print("Starting worker task")
+    executor = ThreadPoolExecutor(max_workers=2)  # Number of concurrent workers
+    worker_thread = threading.Thread(target=worker, args=(executor,), daemon=True)
+    worker_thread.start()
+    print("Worker task created")
+
+# Make sure to start the worker when the script runs
+if __name__ == "__main__":
+    start_worker()

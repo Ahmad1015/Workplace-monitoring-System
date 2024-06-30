@@ -5,7 +5,7 @@ import time
 import requests
 from datetime import datetime
 import os
-from detect import run_detection
+
 
 output_dir = os.path.dirname(__file__)
 
@@ -131,24 +131,7 @@ async def face_detection(filename, frame_skip=15):
     cv2.destroyAllWindows()
     print("Video file and windows released/closed successfully.")
     
-    print("Going for Yolo Detection")
-    # Call YOLOv7 detection on the original video file and save output in script directory
-    run_detection(
-        weights='best.pt',
-        source=filename,
-        device='cuda',
-        view_img=True,
-        save_txt=True,
-        save_conf=True,
-        nosave=False,
-        classes=None,
-        agnostic_nms=False,
-        augment=False,
-        project=output_dir,  # Save output in the script directory
-        name='exp',
-        exist_ok=True,
-        no_trace=True,
-    )
+    
 
     try:
         os.remove(filename)

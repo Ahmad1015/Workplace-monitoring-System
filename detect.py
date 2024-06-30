@@ -140,16 +140,16 @@ def detect(opt):
             # Print time (inference + NMS)
             print(f'{s}Done. ({(1E3 * (t2 - t1)):.1f}ms) Inference, ({(1E3 * (t3 - t2)):.1f}ms) NMS')
 
-            # Add text "Gun was detected" if a gun is detected
+            # Add text "Gun Detected" if a gun is detected
             if gun_detected:
-                cv2.putText(im0, "Gun was detected", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
+                cv2.putText(im0, "Gun Detected", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
 
             # Stream results
             if view_img:
                 cv2.imshow(str(p), im0)
                 cv2.waitKey(1)  # 1 millisecond
 
-            # Save results (image with detections) only if a gun is detected
+            # Save results (image with detections)
             if save_img:
                 if dataset.mode == 'image':
                     cv2.imwrite(save_path, im0)
@@ -196,8 +196,7 @@ def detect(opt):
         print("Failed to save detection record.")
     
 
-
-def run_detection(weights, source, img_size=640, conf_thres=0.10, iou_thres=0.45, device='', view_img=False, save_txt=False, save_conf=False, nosave=False, classes=None, agnostic_nms=False, augment=False, project='runs/detect', name='Videos', exist_ok=False, no_trace=True):
+def run_detection(weights, source, img_size=640, conf_thres=0.10, iou_thres=0.45, device='cuda', view_img=False, save_txt=False, save_conf=False, nosave=False, classes=None, agnostic_nms=False, augment=False, project='runs/detect', name='Videos', exist_ok=False, no_trace=True):
     class Opt:
         def __init__(self, weights, source, img_size, conf_thres, iou_thres, device, view_img, save_txt, save_conf, nosave, classes, agnostic_nms, augment, project, name, exist_ok, no_trace):
             self.weights = weights

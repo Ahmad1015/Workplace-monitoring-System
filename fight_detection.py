@@ -18,11 +18,15 @@ from torchvision.transforms._functional_video import normalize
 from pytorchvideo.data.ava import AvaLabeledVideoFramePaths
 from pytorchvideo.models.hub import slow_r50_detection
 from pytorchvideo.data.encoded_video import EncodedVideo
+from detect import run_detection
+import gc
 
+output_dir = os.path.dirname(__file__)
 # Configure logging
 logging.basicConfig(filename='fight_detection.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 async def fight_detection(filename):
+    print("Inside Fight Detection")
     logging.info(f"Started fight detection on: {filename}")
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -228,4 +232,25 @@ async def fight_detection(filename):
 
     process_video(filename)
     logging.info(f"Fight detection completed for: {filename}")
+    gc.collect()
+    torch.cuda.empty_cache()
+    
+    print("Going for Yolo Detection")
+    # Call YOLOv7 detection on the original video file and save output in script directory
+    run_detection(
+        weights='best.pt',
+        source=filename,
+        device='cuda',
+        view_img=True,
+        save_txt=True,
+        save_conf=True,
+        nosave=False,
+        classes=None,
+        agnostic_nms=False,
+        augment=False,
+        project=output_dir,  # Save output in the script directory
+        name='exp',
+        exist_ok=True,
+        no_trace=True,
+    )
     os.remove(filename)

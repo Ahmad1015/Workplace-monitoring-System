@@ -3,7 +3,8 @@ from pydantic import BaseModel
 from pymongo import MongoClient
 import os
 from datetime import datetime
-from video_recording import main_record_and_process
+from video_recording import main_record_and_process, start_worker
+import threading
 
 app = FastAPI()
 video_counter = 1
@@ -12,7 +13,6 @@ filename = ""
 
 # MongoDB connection setup
 client = MongoClient("mongodb://localhost:27017")
-
 
 class RecordVideoRequest(BaseModel):
     duration: int = 10
@@ -35,6 +35,12 @@ class GunDetectionRecord(BaseModel):
     video_path: str
     timestamp: datetime
 
+@app.on_event("startup")
+def startup_event():
+    print("Starting worker at startup")
+    worker_thread = threading.Thread(target=start_worker, daemon=True)
+    worker_thread.start()
+    print("Worker thread should be started")
 
 @app.post("/record_video/")
 async def record_video_endpoint(background_tasks: BackgroundTasks, request: RecordVideoRequest):
@@ -68,6 +74,9 @@ async def save_detection(record: GunDetectionRecord):
     collection.insert_one(record.dict())
     return {"info": "Detection record saved"}
 
+def create_app():
+    return app
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(create_app(), host="0.0.0.0", port=8000)

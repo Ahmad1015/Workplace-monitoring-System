@@ -4,11 +4,13 @@ import time
 url = 'http://localhost:8000/record_video/'
 data = {
     "duration": 10,
-    "fps": 30,
+    "fps": 15,
     "ip_address": "192.168.10.3",
     "port": 4747
 }
-for i in range(2):
+for i in range(3):
     # Send the POST request with JSON data
     response = requests.post(url, json=data)
     print(response)
+    time.sleep(10)
+
