@@ -11,18 +11,11 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Adjust this to your needs
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
 video_counter = 1
 script_dir = os.path.dirname(os.path.abspath(__file__))
 filename = ""
-app.mount("/screenshots", StaticFiles(directory="D:/Workplace-monitoring-System/screenshots"), name="screenshots")
-app.mount("/Videos", StaticFiles(directory="D:/Workplace-monitoring-System/Videos"), name="Videos")
+
 
 # MongoDB connection setup
 client = MongoClient("mongodb://localhost:27017")
@@ -33,10 +26,6 @@ class RecordVideoRequest(BaseModel):
     ip_address: str
     port: int
 
-class ScreenshotDetectionRecord(BaseModel):
-    name: str
-    screenshot_path: str
-    timestamp: datetime
 
 class VideoDetectionRecord(BaseModel):
     name: str
@@ -74,19 +63,6 @@ async def record_video_endpoint(background_tasks: BackgroundTasks, request: Reco
     video_counter += 1
     return {"info": f"Video recording started: {filename}"}
 
-@app.post("/face_detection/")
-async def save_detection(record: ScreenshotDetectionRecord):
-    db = client["face_detection"]
-    collection = db["detections"]
-    collection.insert_one(record.dict())
-    return {"info": "Detection record saved"}
-
-@app.post("/fight_detection/")
-async def save_detection(record: VideoDetectionRecord):
-    db = client["fight_detection"]
-    collection = db["detections"]
-    collection.insert_one(record.dict())
-    return {"info": "Detection record saved"}
 
 @app.post("/gun_detection/")
 async def save_detection(record: GunDetectionRecord):
@@ -101,67 +77,6 @@ async def save_detection(record: WritingDetectionRecord):
     collection = db["detections"]
     collection.insert_one(record.dict())
     return {"info": "Detection record saved"}
-
-@app.get("/get-face-screenshots")
-async def get_face_screenshots():
-    try:
-        db = client["face_detection"]
-        collection = db["detections"]
-        records = collection.find()
-        
-        screenshots = []
-        for record in records:
-            record["_id"] = str(record["_id"])
-            # Convert absolute path to relative path
-            if "screenshot_path" in record:
-                record["screenshot_path"] = "/screenshots/" + os.path.basename(record["screenshot_path"])
-            screenshots.append(record)
-        
-        return screenshots
-    except Exception as e:
-        return {"error": str(e)}
-
-@app.get("/get-unauthorized-face-screenshots")
-async def get_unauthorized_face_screenshots():
-    try:
-        db = client["face_detection"]
-        collection = db["detections"]
-        records = collection.find()
-        
-        screenshots = []
-        for record in records:
-            # Extract name and timestamp from record
-            name = record.get("name", "")
-            timestamp = record.get("timestamp", "")
-            
-            # Append name and timestamp to screenshots list
-            screenshots.append({
-                "name": name,
-                "timestamp": timestamp
-            })
-        
-        return screenshots
-    except Exception as e:
-        return {"error": str(e)}
-    
-@app.get("/get-videos")
-async def get_videos():
-    try:
-        db = client["fight_detection"]
-        collection = db["detections"]
-        records = collection.find()
-        
-        videos = []
-        for record in records:
-            record["_id"] = str(record["_id"])
-            # Convert absolute path to relative path
-            if "video_path" in record:
-                record["video_path"] = "/Videos/" + os.path.basename(record["video_path"])
-            videos.append(record)
-            print(videos)
-        return videos
-    except Exception as e:
-        return {"error": str(e)}
 
 
 

@@ -10,9 +10,11 @@ import urllib
 import gc
 import cv2
 import requests
-import tempfile
+from detect import run_detection
 
-def ActivityRecognition(filename):
+output_dir = os.path.dirname(__file__)
+
+async def ActivityRecognition(filename):
     # Clear cache and free up memory
     gc.collect()
     torch.cuda.empty_cache()
@@ -170,5 +172,26 @@ def ActivityRecognition(filename):
 
             except Exception as e:
                 print(f"Error saving clip: {e}")
+    print("Going for Yolo Detection")
+    # Call YOLOv7 detection on the original video file and save output in script directory
+    run_detection(
+        weights='best.pt',
+        source=filename,
+        device='cpu',
+        view_img=True,
+        save_txt=True,
+        save_conf=True,
+        nosave=False,
+        classes=None,
+        agnostic_nms=False,
+        augment=False,
+        project=output_dir,  # Save output in the script directory
+        name='exp',
+        exist_ok=True,
+        no_trace=True,
+    )
+    gc.collect()
+    torch.cuda.empty_cache()
+    print("Done with Yolo Detection")
 
 
