@@ -2,25 +2,25 @@ import cv2
 import os
 import shutil
 from concurrent.futures import ThreadPoolExecutor
-from face_recog import face_detection
 from fight_detection import fight_detection
 import threading
 import asyncio
 import queue
+import logging
 
-# Define the Output Videos directory relative to the current script's location
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+
 output_dir = os.path.dirname(__file__)
 video_queue = queue.Queue()
 
-def record_video(filename, duration=10, fps=30, ip_address=0):
-    print(f"Started recording video: {filename}")
-
-    # Check if IP camera is provided
+async def record_video(filename, duration=10, fps=30, ip_address=0):
+    logging.info(f"Started recording video: {filename}")
     cap = cv2.VideoCapture(ip_address)
 
     if not cap.isOpened():
-        print("Error: Camera not accessible")
-        return
+        logging.error("Error: Camera not accessible")
+        return None
 
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     output_filepath = os.path.join(output_dir, filename)
@@ -35,79 +35,69 @@ def record_video(filename, duration=10, fps=30, ip_address=0):
             out.write(frame)
             frame_count += 1
         else:
-            print("Failed to read frame from camera")
+            logging.error("Failed to read frame from camera")
             break
 
     cap.release()
     out.release()
-
-    print(f"Finished recording video: {filename}")
+    logging.info(f"Finished recording video: {filename}")
 
     temp = filename.split("\\")[-1]
-
-    copy1 = os.path.join(output_dir, f"copy1_{temp}")
     copy2 = os.path.join(output_dir, f"copy2_{temp}")
 
     try:
-        shutil.copy(output_filepath, copy1)
         shutil.copy(output_filepath, copy2)
-        os.remove(filename)
+        os.remove(output_filepath)
     except Exception as e:
-        print(f"Error copying files: {e}")
+        logging.error(f"Error copying files: {e}")
+        return None
 
-    return copy1, copy2
+    return copy2
 
-import asyncio
-
-def process_video(model, filename):
-    print(f"Inside Process Video for model {model} on file {filename}")
-    if model == 'face_detection':
-        print(f"Started face detection on: {filename}")
-        asyncio.run(face_detection(filename))
-        print(f"Completed face detection on: {filename}")
-    elif model == 'fight_detection':
-        print(f"Started fight detection on: {filename}")
-        asyncio.run(fight_detection(filename))
-        print(f"Completed fight detection on: {filename}")
-
+async def process_video(model, filename):
+    logging.info(f"Inside Process Video for model {model} on file {filename}")
+    logging.info(f"Started fight detection on: {filename}")
+    await fight_detection(filename)
+    logging.info(f"Completed fight detection on: {filename}")
 
 def delete_video(filename):
-    print(f"Attempting to delete video: {filename}")
+    logging.info(f"Attempting to delete video: {filename}")
     try:
         os.remove(filename)
-        print(f"Deleted video: {filename}")
+        logging.info(f"Deleted video: {filename}")
     except OSError as e:
-        print(f"Error deleting video {filename}: {e}")
+        logging.error(f"Error deleting video {filename}: {e}")
 
-def main_record_and_process(filename, duration, fps, ip_address):
-    print("Recording video")
-    copy1, copy2 = record_video(filename, duration, fps, ip_address)
-    print("Recording completed. Adding videos to queue")
-    video_queue.put((copy1, 'face_detection'))
-    video_queue.put((copy2, 'fight_detection'))
-    print(f"Queue now contains: {list(video_queue.queue)}")  # Print current queue status
+async def main_record_and_process(filename, duration, fps, ip_address):
+    logging.info("Recording video")
+    copy2 = await record_video(filename, duration, fps, ip_address)
+    if copy2:
+        logging.info("Recording completed. Adding videos to queue")
+        video_queue.put((copy2, 'fight_detection'))
+        logging.info(f"Queue now contains: {list(video_queue.queue)}")
+    else:
+        logging.error("Recording failed. Not adding to queue")
 
 def worker(executor):
-    print("Worker started")
+    logging.info("Worker started")
     while True:
-        print("Worker waiting for items in the queue")
+        logging.info("Worker waiting for items in the queue")
         filename, model = video_queue.get()
         try:
-            print(f"Worker processing {filename} with model {model}")
-            future = executor.submit(process_video, model, filename)
-            future.result()  # Wait for the processing to complete
+            logging.info(f"Worker processing {filename} with model {model}")
+            future = executor.submit(asyncio.run, process_video(model, filename))
+            future.result()
         finally:
             video_queue.task_done()
             delete_video(filename)
-            print(f"Worker finished processing {filename} with model {model}")
+            logging.info(f"Worker finished processing {filename} with model {model}")
 
 def start_worker():
-    print("Starting worker task")
-    executor = ThreadPoolExecutor(max_workers=2)  # Number of concurrent workers
+    logging.info("Starting worker task")
+    executor = ThreadPoolExecutor(max_workers=2)
     worker_thread = threading.Thread(target=worker, args=(executor,), daemon=True)
     worker_thread.start()
-    print("Worker task created")
+    logging.info("Worker task created")
 
-# Make sure to start the worker when the script runs
 if __name__ == "__main__":
     start_worker()
