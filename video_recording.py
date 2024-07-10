@@ -3,7 +3,6 @@ import os
 import shutil
 from concurrent.futures import ThreadPoolExecutor
 from face_recog import face_detection
-from fight_detection import fight_detection
 import threading
 import asyncio
 import queue
@@ -45,30 +44,26 @@ def record_video(filename, duration=10, fps=30, ip_address=0):
 
     temp = filename.split("\\")[-1]
 
-    copy1 = os.path.join(output_dir, f"copy1_{temp}")
-    copy2 = os.path.join(output_dir, f"copy2_{temp}")
+    copy = os.path.join(output_dir, f"copy1_{temp}")
+
 
     try:
-        shutil.copy(output_filepath, copy1)
-        shutil.copy(output_filepath, copy2)
+        shutil.copy(output_filepath, copy)
+
         os.remove(filename)
     except Exception as e:
         print(f"Error copying files: {e}")
 
-    return copy1, copy2
+    return copy
 
 import asyncio
 
 def process_video(model, filename):
     print(f"Inside Process Video for model {model} on file {filename}")
-    if model == 'face_detection':
-        print(f"Started face detection on: {filename}")
-        asyncio.run(face_detection(filename))
-        print(f"Completed face detection on: {filename}")
-    elif model == 'fight_detection':
-        print(f"Started fight detection on: {filename}")
-        asyncio.run(fight_detection(filename))
-        print(f"Completed fight detection on: {filename}")
+    print(f"Started face detection on: {filename}")
+    asyncio.run(face_detection(filename))
+    print(f"Completed face detection on: {filename}")
+
 
 
 def delete_video(filename):
@@ -81,10 +76,9 @@ def delete_video(filename):
 
 def main_record_and_process(filename, duration, fps, ip_address):
     print("Recording video")
-    copy1, copy2 = record_video(filename, duration, fps, ip_address)
+    copy1 = record_video(filename, duration, fps, ip_address)
     print("Recording completed. Adding videos to queue")
     video_queue.put((copy1, 'face_detection'))
-    video_queue.put((copy2, 'fight_detection'))
     print(f"Queue now contains: {list(video_queue.queue)}")  # Print current queue status
 
 def worker(executor):

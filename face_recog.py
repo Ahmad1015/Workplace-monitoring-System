@@ -5,11 +5,13 @@ import time
 import requests
 from datetime import datetime
 import os
-
+from detect import run
+import shutil
 
 output_dir = os.path.dirname(__file__)
 
 async def face_detection(filename, frame_skip=10):
+    print("Starting face detection...")
     # Load a sample picture and learn how to recognize it.
     try:
         known_image = face_recognition.load_image_file("Official_photo.jpeg")
@@ -130,16 +132,42 @@ async def face_detection(filename, frame_skip=10):
     video_capture.release()
     cv2.destroyAllWindows()
     print("Video file and windows released/closed successfully.")
+    save_dir = run(
+    weights='best.pt',
+    source=filename,
     
-    
-
-    try:
-        os.remove(filename)
-    except Exception as e:
-        print(f"Error removing video file: {e}")
-
-
-
-    
-    
-
+    imgsz=[640, 640],
+    conf_thres=0.25,
+    iou_thres=0.45,
+    max_det=1000,
+    device='cuda:0',
+    view_img=False,
+    save_txt=False,
+    save_conf=False,
+    save_crop=False,
+    nosave=False,
+    classes=None,
+    agnostic_nms=False,
+    augment=False,
+    visualize=False,
+    update=False,
+    project='path/to/project',
+    name='exp',
+    exist_ok=False,
+    line_thickness=3,
+    hide_labels=False,
+    hide_conf=False,
+    half=False,
+    dnn=False,
+    vid_stride=1,
+)
+    print(f"Face detection completed. Results saved in: {save_dir}")
+    source = os.path.join(r'D:\Workplace-monitoring-System', save_dir, filename)
+    destination_dir = r'D:\Workplace-monitoring-System\videos'  # Destination directory
+    os.makedirs(destination_dir, exist_ok=True)
+    destination = os.path.join(destination_dir, os.path.basename(source))
+    shutil.move(source, destination)
+    temp = "path"
+    dir_to_remove = os.path.join(r'D:\Workplace-monitoring-System', temp)
+    shutil.rmtree(dir_to_remove)
+    print(f'File moved to {destination}')
