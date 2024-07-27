@@ -124,7 +124,7 @@ def ActivityRecognition(filename):
 
     # Process detected actions
     for start, end, label, prob in predicted_actions:
-        if label != "writing" and prob > 0.1:
+        if label == "writing" and prob > 0.1:
             print(f"Writing detected from {start}s to {end}s (confidence: {prob:.2f})")
             
             try:
