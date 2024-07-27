@@ -28,7 +28,7 @@ This project is a Workplace Monitoring System designed to monitor various activi
 - Node.js and npm
 - MongoDB
 ## Setup
-Either Setup Using Conda or Manually install Libraries
+Either Setup Using Conda or Manually install Libraries. Download Yolo best weights from here : [Link](https://drive.google.com/file/d/1mKzcNbJJ9kJeO8sUrjJ7Er2Qe_2wBV1t/view) and rename is to best.pt and save it in the root directory.
 ## Conda
 ### Setting Up the Conda Environment
 
