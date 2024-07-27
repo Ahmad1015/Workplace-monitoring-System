@@ -168,7 +168,7 @@ async def fight_detection(filename):
 
                 # Check if 'fight' is detected
                 for predicted_classes in frame_predictions:
-                    if 'sit' in predicted_classes:
+                    if 'fight/hit (a person)' in predicted_classes:
                         fight_detected = True
                         break
                 if fight_detected:
